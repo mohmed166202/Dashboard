@@ -1,0 +1,110 @@
+name: Healthcare Portfolio Intelligence Sync
+
+on:
+  # 1. Scheduled Execution (Daily at 03:00 UTC)
+  schedule:
+    - cron: '0 3 * * *'
+
+  # 2. Manual One-Click Trigger from GitHub Actions Tab
+  workflow_dispatch:
+    inputs:
+      full_refresh:
+        description: 'Run full discovery and extraction across all repos'
+        required: true
+        type: boolean
+        default: true
+      target_type:
+        description: 'Target type (viewer, org, or user)'
+        required: false
+        default: 'viewer'
+      concurrency_workers:
+        description: 'Concurrency workers for extraction'
+        required: false
+        default: '8'
+
+  # 3. Trigger on changes to documentation or schemas in this repo
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'domain_taxonomy.py'
+      - '.github/workflows/portfolio-sync.yml'
+
+jobs:
+  sync-portfolio:
+    name: Sync, Classify & Publish Portfolio Dashboard
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests
+
+      - name: Phase 1 - High-Speed Discovery & Cataloging
+        env:
+          GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.PORTFOLIO_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+          GITHUB_TARGET_TYPE: ${{ inputs.target_type || 'viewer' }}
+        run: |
+          python run_phase1.py
+
+      - name: Phase 2 - Targeted Document & Asset Extraction
+        env:
+          GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.PORTFOLIO_GITHUB_TOKEN || secrets.GITHUB_TOKEN }}
+        run: |
+          python run_phase2.py --workers ${{ inputs.concurrency_workers || 8 }}
+
+      - name: Phase 3 - Semantic Domain Classification
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python run_phase3.py
+
+      - name: Phase 4 - Portfolio Catalog Synthesis & Dashboard Generation
+        run: |
+          python run_phase4.py
+
+      - name: Upload Synthesis Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: healthcare-portfolio-dashboard
+          path: |
+            output/dashboard/
+            output/reports/
+            healthcare_portfolio_catalog.db
+
+      - name: Deploy Dashboard to GitHub Pages
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: output/dashboard/
+
+  deploy-pages:
+    name: Publish to GitHub Pages
+    needs: sync-portfolio
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

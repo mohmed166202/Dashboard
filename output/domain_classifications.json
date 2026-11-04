@@ -1,0 +1,2454 @@
+[
+  {
+    "repo_name": "Interview-Chatbot",
+    "name_with_owner": "Andalusia-Data-Science-Team/Interview-Chatbot",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Interview-Chatbot' matches primary domain 'Academy and L&D' with hybrid score 1.44. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "flask",
+      "gunicorn",
+      "python-dotenv",
+      "requests"
+    ]
+  },
+  {
+    "repo_name": "CV-Ranking",
+    "name_with_owner": "Andalusia-Data-Science-Team/CV-Ranking",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/CV-Ranking' matches primary domain 'Clinical Informatics' with hybrid score 3.13. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "PyPDF2",
+      "flask",
+      "python-docx",
+      "requests"
+    ]
+  },
+  {
+    "repo_name": "AI-Powered-Collaborative-Documentation-Assistant",
+    "name_with_owner": "Andalusia-Data-Science-Team/AI-Powered-Collaborative-Documentation-Assistant",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Medical Coding and Pricing"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/AI-Powered-Collaborative-Documentation-Assistant' matches primary domain 'Clinical Informatics' with hybrid score 12.72. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "beautifulsoup4",
+      "fastapi",
+      "fireworks-ai",
+      "langchain",
+      "langchain-community",
+      "langchain-fireworks"
+    ]
+  },
+  {
+    "repo_name": "OPD_ClinicalNotes_Analyzer",
+    "name_with_owner": "Andalusia-Data-Science-Team/OPD_ClinicalNotes_Analyzer",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/OPD_ClinicalNotes_Analyzer' matches primary domain 'Medical Coding and Pricing' with hybrid score 17.96. Identified domain signatures: ['ICD-10'].",
+    "detected_standards": [
+      "ICD-10"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "PyYAML",
+      "SQLAlchemy",
+      "apache-airflow",
+      "fireworks-ai",
+      "numpy",
+      "openai"
+    ]
+  },
+  {
+    "repo_name": "QA-for-call-center",
+    "name_with_owner": "Andalusia-Data-Science-Team/QA-for-call-center",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/QA-for-call-center' matches primary domain 'Academy and L&D' with hybrid score 1.54. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "acres",
+      "aiofiles",
+      "aiohappyeyeballs",
+      "aiohttp",
+      "aiosignal",
+      "annotated-doc"
+    ]
+  },
+  {
+    "repo_name": "eligibility-etl-airflow",
+    "name_with_owner": "Andalusia-Data-Science-Team/eligibility-etl-airflow",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/eligibility-etl-airflow' matches primary domain 'Medical Coding and Pricing' with hybrid score 14.61. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "apache-airflow",
+      "apache-airflow[mssql]",
+      "beautifulsoup4",
+      "cx_Oracle",
+      "eligibility-etl-airflow:Insurance",
+      "mysql:8.0"
+    ]
+  },
+  {
+    "repo_name": "radiology-dictation-app",
+    "name_with_owner": "Andalusia-Data-Science-Team/radiology-dictation-app",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/radiology-dictation-app' matches primary domain 'Clinical Informatics' with hybrid score 7.48. Identified domain signatures: ['EMR'].",
+    "detected_standards": [
+      "EMR"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "Pillow",
+      "aiofiles",
+      "bcrypt",
+      "beautifulsoup4",
+      "billiard"
+    ]
+  },
+  {
+    "repo_name": "Voice_for_Clinics",
+    "name_with_owner": "Andalusia-Data-Science-Team/Voice_for_Clinics",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Academy and L&D"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Voice_for_Clinics' matches primary domain 'Clinical Informatics' with hybrid score 6.78. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "aiofiles",
+      "bcrypt",
+      "beautifulsoup4",
+      "fastapi",
+      "fastapi-health"
+    ]
+  },
+  {
+    "repo_name": "radiology-voice-system",
+    "name_with_owner": "Andalusia-Data-Science-Team/radiology-voice-system",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/radiology-voice-system' matches primary domain 'Clinical Informatics' with hybrid score 7.13. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "aiofiles",
+      "bcrypt",
+      "beautifulsoup4",
+      "billiard",
+      "celery"
+    ]
+  },
+  {
+    "repo_name": "Resubmission-Copilot",
+    "name_with_owner": "Andalusia-Data-Science-Team/Resubmission-Copilot",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics",
+      "Finance"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Resubmission-Copilot' matches primary domain 'Medical Coding and Pricing' with hybrid score 7.66. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "app"
+    ]
+  },
+  {
+    "repo_name": "Medical_voice_FAPI",
+    "name_with_owner": "Andalusia-Data-Science-Team/Medical_voice_FAPI",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Medical_voice_FAPI' matches primary domain 'Clinical Informatics' with hybrid score 0.82. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Integrated-CV-Ranker-Chatbot",
+    "name_with_owner": "Andalusia-Data-Science-Team/Integrated-CV-Ranker-Chatbot",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Integrated-CV-Ranker-Chatbot' matches primary domain 'Clinical Informatics' with hybrid score 0.86. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "\u0000",
+      "\u0000B\u0000r\u0000o\u0000t\u0000l\u0000i\u0000",
+      "\u0000a\u0000i\u0000o\u0000h\u0000a\u0000p\u0000p\u0000y\u0000e\u0000y\u0000e\u0000b\u0000a\u0000l\u0000l\u0000s\u0000",
+      "\u0000a\u0000i\u0000o\u0000h\u0000t\u0000t\u0000p\u0000",
+      "\u0000a\u0000i\u0000o\u0000s\u0000i\u0000g\u0000n\u0000a\u0000l\u0000",
+      "\u0000a\u0000n\u0000n\u0000o\u0000t\u0000a\u0000t\u0000e\u0000d\u0000-\u0000t\u0000y\u0000p\u0000e\u0000s\u0000"
+    ]
+  },
+  {
+    "repo_name": "ClinicalNotes2Features",
+    "name_with_owner": "Andalusia-Data-Science-Team/ClinicalNotes2Features",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/ClinicalNotes2Features' matches primary domain 'Clinical Informatics' with hybrid score 22.95. Identified domain signatures: ['EMR'].",
+    "detected_standards": [
+      "EMR"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "PyYAML",
+      "dotenv",
+      "fireworks",
+      "fireworks-ai",
+      "numpy",
+      "openpyxl"
+    ]
+  },
+  {
+    "repo_name": "medical-screening",
+    "name_with_owner": "Andalusia-Data-Science-Team/medical-screening",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Supply Chain",
+      "Construction"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/medical-screening' matches primary domain 'Clinical Informatics' with hybrid score 2.96. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "medical_voice_recognition",
+    "name_with_owner": "Andalusia-Data-Science-Team/medical_voice_recognition",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/medical_voice_recognition' matches primary domain 'Academy and L&D' with hybrid score 2.66. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "electron"
+    ]
+  },
+  {
+    "repo_name": "MedVoice",
+    "name_with_owner": "Andalusia-Data-Science-Team/MedVoice",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MedVoice' matches primary domain 'Clinical Informatics' with hybrid score 0.96. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "aiofiles",
+      "bcrypt",
+      "beautifulsoup4",
+      "billiard",
+      "celery"
+    ]
+  },
+  {
+    "repo_name": "Bed-Management",
+    "name_with_owner": "Andalusia-Data-Science-Team/Bed-Management",
+    "primary_domain": "Supply Chain",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Bed-Management' matches primary domain 'Supply Chain' with hybrid score 2.73. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "AutoMapper",
+    "name_with_owner": "Andalusia-Data-Science-Team/AutoMapper",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/AutoMapper' matches primary domain 'Construction' with hybrid score 0.52. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "No-Code-AI",
+    "name_with_owner": "Andalusia-Data-Science-Team/No-Code-AI",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/No-Code-AI' matches primary domain 'Construction' with hybrid score 0.44. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Medical_voice_assistant",
+    "name_with_owner": "Andalusia-Data-Science-Team/Medical_voice_assistant",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [
+      "Supply Chain",
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Medical_voice_assistant' matches primary domain 'Academy and L&D' with hybrid score 4.24. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Eligibilty_api_schedule",
+    "name_with_owner": "Andalusia-Data-Science-Team/Eligibilty_api_schedule",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Eligibilty_api_schedule' matches primary domain 'Construction' with hybrid score 0.54. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Drug-Database",
+    "name_with_owner": "Andalusia-Data-Science-Team/Drug-Database",
+    "primary_domain": "Pharmacy",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Drug-Database' matches primary domain 'Pharmacy' with hybrid score 1.72. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "template",
+    "name_with_owner": "Andalusia-Data-Science-Team/template",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/template' matches primary domain 'Construction' with hybrid score 0.39. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Claims_Deployment",
+    "name_with_owner": "Andalusia-Data-Science-Team/Claims_Deployment",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Claims_Deployment' matches primary domain 'Medical Coding and Pricing' with hybrid score 0.65. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "\u0000",
+      "\u0000B\u0000a\u0000b\u0000e\u0000l\u0000",
+      "\u0000a\u0000n\u0000y\u0000i\u0000o\u0000",
+      "\u0000a\u0000r\u0000g\u0000o\u0000n\u00002\u0000-\u0000c\u0000f\u0000f\u0000i\u0000",
+      "\u0000a\u0000r\u0000g\u0000o\u0000n\u00002\u0000-\u0000c\u0000f\u0000f\u0000i\u0000-\u0000b\u0000i\u0000n\u0000d\u0000i\u0000n\u0000g\u0000s\u0000",
+      "\u0000a\u0000r\u0000r\u0000o\u0000w\u0000"
+    ]
+  },
+  {
+    "repo_name": "Master-Doctor",
+    "name_with_owner": "Andalusia-Data-Science-Team/Master-Doctor",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Master-Doctor' matches primary domain 'Clinical Informatics' with hybrid score 1.6. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Claims_Rejection",
+    "name_with_owner": "Andalusia-Data-Science-Team/Claims_Rejection",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Claims_Rejection' matches primary domain 'Medical Coding and Pricing' with hybrid score 4.76. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "SQLAlchemy",
+      "keras",
+      "lightgbm",
+      "matplotlib",
+      "numpy",
+      "pandas"
+    ]
+  },
+  {
+    "repo_name": "AHBS_AIServices",
+    "name_with_owner": "Andalusia-Data-Science-Team/AHBS_AIServices",
+    "primary_domain": "Pharmacy",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/AHBS_AIServices' matches primary domain 'Pharmacy' with hybrid score 1.72. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "chatGPT-api",
+    "name_with_owner": "Andalusia-Data-Science-Team/chatGPT-api",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/chatGPT-api' matches primary domain 'Academy and L&D' with hybrid score 2.01. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "googlemaps-scraper",
+    "name_with_owner": "Andalusia-Data-Science-Team/googlemaps-scraper",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/googlemaps-scraper' matches primary domain 'Academy and L&D' with hybrid score 0.94. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "beautifulsoup4",
+      "pymongo",
+      "selenium"
+    ]
+  },
+  {
+    "repo_name": "MaskYolo_Caffe",
+    "name_with_owner": "Andalusia-Data-Science-Team/MaskYolo_Caffe",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Academy and L&D"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MaskYolo_Caffe' matches primary domain 'Clinical Informatics' with hybrid score 6.22. Identified domain signatures: ['HIS'].",
+    "detected_standards": [
+      "HIS"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Cython",
+      "Pillow",
+      "cython",
+      "fire",
+      "flask",
+      "h5py"
+    ]
+  },
+  {
+    "repo_name": "fairlearn-demo",
+    "name_with_owner": "Andalusia-Data-Science-Team/fairlearn-demo",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/fairlearn-demo' matches primary domain 'Academy and L&D' with hybrid score 2.18. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "fairlearn",
+      "matplotlib",
+      "numpy",
+      "pandas",
+      "scikit-learn"
+    ]
+  },
+  {
+    "repo_name": "Livekit-guide",
+    "name_with_owner": "Andalusia-Data-Science-Team/Livekit-guide",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Livekit-guide' matches primary domain 'Clinical Informatics' with hybrid score 3.52. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "livekit-server:latest",
+      "sip:latest",
+      "redis:7-alpine",
+      "livekit",
+      "redis",
+      "sip"
+    ]
+  },
+  {
+    "repo_name": "BentoML-Demo",
+    "name_with_owner": "Andalusia-Data-Science-Team/BentoML-Demo",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/BentoML-Demo' matches primary domain 'Academy and L&D' with hybrid score 1.42. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "bentoml",
+      "numpy",
+      "scikit-learn"
+    ]
+  },
+  {
+    "repo_name": "Clinical_Notes",
+    "name_with_owner": "Andalusia-Data-Science-Team/Clinical_Notes",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Clinical_Notes' matches primary domain 'Medical Coding and Pricing' with hybrid score 15.85. Identified domain signatures: ['ICD-10'].",
+    "detected_standards": [
+      "ICD-10"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "PyYAML",
+      "SQLAlchemy",
+      "apache-airflow",
+      "fireworks-ai",
+      "numpy",
+      "openai"
+    ]
+  },
+  {
+    "repo_name": "Upcoding",
+    "name_with_owner": "Andalusia-Data-Science-Team/Upcoding",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Finance"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Upcoding' matches primary domain 'Medical Coding and Pricing' with hybrid score 13.88. Identified domain signatures: ['RCM', 'ICD-10'].",
+    "detected_standards": [
+      "ICD-10",
+      "RCM"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "contact-center-chatbot",
+    "name_with_owner": "Andalusia-Data-Science-Team/contact-center-chatbot",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.95,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/contact-center-chatbot' matches primary domain 'Clinical Informatics' with hybrid score 33.8. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "fastapi",
+      "langgraph",
+      "msal",
+      "pandas",
+      "pyodbc",
+      "python-dotenv"
+    ]
+  },
+  {
+    "repo_name": "Patient_Segmentation",
+    "name_with_owner": "Andalusia-Data-Science-Team/Patient_Segmentation",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Patient_Segmentation' matches primary domain 'Clinical Informatics' with hybrid score 11.23. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "catboost",
+      "faiss-cpu",
+      "ipykernel",
+      "jupyter",
+      "kmodes",
+      "matplotlib"
+    ]
+  },
+  {
+    "repo_name": "MOH",
+    "name_with_owner": "Andalusia-Data-Science-Team/MOH",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MOH' matches primary domain 'Clinical Informatics' with hybrid score 12.66. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "annotated-types",
+      "anyio",
+      "click",
+      "fastapi",
+      "h11",
+      "httptools"
+    ]
+  },
+  {
+    "repo_name": "Contact-center-voice-agent",
+    "name_with_owner": "Andalusia-Data-Science-Team/Contact-center-voice-agent",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Contact-center-voice-agent' matches primary domain 'Clinical Informatics' with hybrid score 19.12. Identified domain signatures: ['HIS'].",
+    "detected_standards": [
+      "HIS"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "av",
+      "boto3",
+      "langgraph",
+      "langsmith[livekit]",
+      "livekit-agents",
+      "livekit-plugins-hush"
+    ]
+  },
+  {
+    "repo_name": "Medvoice_longterm",
+    "name_with_owner": "Andalusia-Data-Science-Team/Medvoice_longterm",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Medical Coding and Pricing"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Medvoice_longterm' matches primary domain 'Clinical Informatics' with hybrid score 10.76. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "aiofiles",
+      "bcrypt",
+      "beautifulsoup4",
+      "fastapi",
+      "fastapi-health"
+    ]
+  },
+  {
+    "repo_name": "Medical_prediction",
+    "name_with_owner": "Andalusia-Data-Science-Team/Medical_prediction",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Medical_prediction' matches primary domain 'Medical Coding and Pricing' with hybrid score 16.68. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "apache-airflow",
+      "apache-airflow[mssql]",
+      "cryptography",
+      "medical-prediction:insurance",
+      "mysql:8.0",
+      "numpy"
+    ]
+  },
+  {
+    "repo_name": "Online_Cancellation_Flow",
+    "name_with_owner": "Andalusia-Data-Science-Team/Online_Cancellation_Flow",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Academy and L&D"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Online_Cancellation_Flow' matches primary domain 'Clinical Informatics' with hybrid score 4.22. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "aiohttp",
+      "ocf-watcher:latest",
+      "msal",
+      "pymssql",
+      "pyodbc"
+    ]
+  },
+  {
+    "repo_name": "KGraph-non-voice-call-center-",
+    "name_with_owner": "Andalusia-Data-Science-Team/KGraph-non-voice-call-center-",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/KGraph-non-voice-call-center-' matches primary domain 'Construction' with hybrid score 0.46. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "mlflow-team-toolkit",
+    "name_with_owner": "Andalusia-Data-Science-Team/mlflow-team-toolkit",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/mlflow-team-toolkit' matches primary domain 'Clinical Informatics' with hybrid score 3.01. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "google-generativeai",
+      "postgres:16-alpine",
+      "langchain",
+      "langchain-core",
+      "langchain-google-genai",
+      "matplotlib"
+    ]
+  },
+  {
+    "repo_name": "nphies-ad-engine",
+    "name_with_owner": "Andalusia-Data-Science-Team/nphies-ad-engine",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.95,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/nphies-ad-engine' matches primary domain 'Medical Coding and Pricing' with hybrid score 29.37. Identified domain signatures: ['DRG', 'CPT', 'ICD-10'].",
+    "detected_standards": [
+      "CPT",
+      "DRG",
+      "ICD-10"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "openpyxl",
+      "pandas",
+      "plotly",
+      "polars",
+      "pyarrow",
+      "pydantic"
+    ]
+  },
+  {
+    "repo_name": "Nphies_Simulator",
+    "name_with_owner": "Andalusia-Data-Science-Team/Nphies_Simulator",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.95,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Nphies_Simulator' matches primary domain 'Medical Coding and Pricing' with hybrid score 27.67. Identified domain signatures: ['FHIR'].",
+    "detected_standards": [
+      "FHIR"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "fastapi",
+      "httpx",
+      "locust",
+      "pandas",
+      "passlib[bcrypt]",
+      "pydantic"
+    ]
+  },
+  {
+    "repo_name": "IVR-confirmation-outbound",
+    "name_with_owner": "Andalusia-Data-Science-Team/IVR-confirmation-outbound",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/IVR-confirmation-outbound' matches primary domain 'Clinical Informatics' with hybrid score 20.91. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "aiohttp",
+      "boto3",
+      "fastapi",
+      "livekit-agents",
+      "livekit-plugins-groq",
+      "livekit-plugins-silero"
+    ]
+  },
+  {
+    "repo_name": "Code_Automation",
+    "name_with_owner": "Andalusia-Data-Science-Team/Code_Automation",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Code_Automation' matches primary domain 'Academy and L&D' with hybrid score 2.7. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "base",
+      "base-manager",
+      "controls",
+      "output",
+      "application",
+      "apputils"
+    ]
+  },
+  {
+    "repo_name": "Final-Diagnosis-Project-",
+    "name_with_owner": "Andalusia-Data-Science-Team/Final-Diagnosis-Project-",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics",
+      "Supply Chain"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Final-Diagnosis-Project-' matches primary domain 'Medical Coding and Pricing' with hybrid score 11.42. Identified domain signatures: ['ICD-10'].",
+    "detected_standards": [
+      "ICD-10"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "aiohappyeyeballs",
+      "aiohttp",
+      "aiosignal",
+      "alembic",
+      "altair",
+      "annotated-types"
+    ]
+  },
+  {
+    "repo_name": "ER-Suspected-Diagnosis",
+    "name_with_owner": "Andalusia-Data-Science-Team/ER-Suspected-Diagnosis",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Clinical Governance"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/ER-Suspected-Diagnosis' matches primary domain 'Clinical Informatics' with hybrid score 5.64. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "arabic-reshaper",
+      "er-suspected-diagnosis:latest",
+      "openpyxl",
+      "pandas",
+      "python-bidi",
+      "python-dotenv"
+    ]
+  },
+  {
+    "repo_name": "AI-In-PACS",
+    "name_with_owner": "Andalusia-Data-Science-Team/AI-In-PACS",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.95,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/AI-In-PACS' matches primary domain 'Clinical Informatics' with hybrid score 32.09. Identified domain signatures: ['PACS', 'DICOM'].",
+    "detected_standards": [
+      "DICOM",
+      "PACS"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "core",
+      "dicom-image-loader",
+      "streaming-image-volume-loader",
+      "tools",
+      "cli",
+      "maker-deb"
+    ]
+  },
+  {
+    "repo_name": "Lab_Prediction",
+    "name_with_owner": "Andalusia-Data-Science-Team/Lab_Prediction",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Lab_Prediction' matches primary domain 'Medical Coding and Pricing' with hybrid score 17.04. Identified domain signatures: ['ICD-10'].",
+    "detected_standards": [
+      "ICD-10"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "SQLAlchemy",
+      "aiohttp",
+      "alembic",
+      "fastapi",
+      "gunicorn",
+      "httpx"
+    ]
+  },
+  {
+    "repo_name": "PlayBook",
+    "name_with_owner": "Andalusia-Data-Science-Team/PlayBook",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/PlayBook' matches primary domain 'Clinical Informatics' with hybrid score 0.8. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Diagnosis-Mapping",
+    "name_with_owner": "Andalusia-Data-Science-Team/Diagnosis-Mapping",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Finance",
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Diagnosis-Mapping' matches primary domain 'Medical Coding and Pricing' with hybrid score 24.35. Identified domain signatures: ['Cost Accounting', 'RCM', 'ICD-10'].",
+    "detected_standards": [
+      "Cost Accounting",
+      "ICD-10",
+      "RCM"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "faiss-cpu",
+      "httpx",
+      "openpyxl",
+      "pandas",
+      "pydantic",
+      "pydantic-settings"
+    ]
+  },
+  {
+    "repo_name": "Claude_project",
+    "name_with_owner": "Andalusia-Data-Science-Team/Claude_project",
+    "primary_domain": "Finance",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Claude_project' matches primary domain 'Finance' with hybrid score 3.55. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "fastapi",
+      "httpx",
+      "qdrant:latest",
+      "neo4j",
+      "openpyxl",
+      "pandas"
+    ]
+  },
+  {
+    "repo_name": "Medical-Approval-Checker",
+    "name_with_owner": "Andalusia-Data-Science-Team/Medical-Approval-Checker",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Supply Chain"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Medical-Approval-Checker' matches primary domain 'Clinical Informatics' with hybrid score 2.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "fastapi",
+      "gunicorn",
+      "numpy",
+      "pandas",
+      "pydantic",
+      "requests-async"
+    ]
+  },
+  {
+    "repo_name": "Chatbot-Auditor",
+    "name_with_owner": "Andalusia-Data-Science-Team/Chatbot-Auditor",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Chatbot-Auditor' matches primary domain 'Academy and L&D' with hybrid score 1.89. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "agno",
+      "aiodns",
+      "aiohappyeyeballs",
+      "aiohttp",
+      "aiosignal",
+      "altair"
+    ]
+  },
+  {
+    "repo_name": "Transfer-Learning-Sessions",
+    "name_with_owner": "Andalusia-Data-Science-Team/Transfer-Learning-Sessions",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Transfer-Learning-Sessions' matches primary domain 'Academy and L&D' with hybrid score 1.48. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Insurance-Policy-Uploader",
+    "name_with_owner": "Andalusia-Data-Science-Team/Insurance-Policy-Uploader",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Insurance-Policy-Uploader' matches primary domain 'Academy and L&D' with hybrid score 0.84. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Deprecated",
+      "Flask",
+      "aiohappyeyeballs",
+      "aiohttp",
+      "aiosignal",
+      "aiosqlite"
+    ]
+  },
+  {
+    "repo_name": "Ceo-Summarization",
+    "name_with_owner": "Andalusia-Data-Science-Team/Ceo-Summarization",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Ceo-Summarization' matches primary domain 'Clinical Informatics' with hybrid score 0.72. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "aiohttp",
+      "docx2txt",
+      "faiss-cpu",
+      "fastapi",
+      "fireworks-ai",
+      "qdrant"
+    ]
+  },
+  {
+    "repo_name": "text-similarity",
+    "name_with_owner": "Andalusia-Data-Science-Team/text-similarity",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/text-similarity' matches primary domain 'Academy and L&D' with hybrid score 1.08. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "RAG",
+    "name_with_owner": "Andalusia-Data-Science-Team/RAG",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/RAG' matches primary domain 'Medical Coding and Pricing' with hybrid score 11.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Temp",
+    "name_with_owner": "Andalusia-Data-Science-Team/Temp",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Temp' matches primary domain 'Construction' with hybrid score 0.51. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "MedSearch",
+    "name_with_owner": "Andalusia-Data-Science-Team/MedSearch",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Medical Coding and Pricing"
+    ],
+    "confidence_score": 0.95,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MedSearch' matches primary domain 'Clinical Informatics' with hybrid score 25.11. Identified domain signatures: ['EMR', 'ICD-10'].",
+    "detected_standards": [
+      "EMR",
+      "ICD-10"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "nginx:latest",
+      "prometheus:latest",
+      "cache-refresh",
+      "ml-inference-1",
+      "ml-network",
+      "nginx-loadbalancer"
+    ]
+  },
+  {
+    "repo_name": "claims-prep",
+    "name_with_owner": "Andalusia-Data-Science-Team/claims-prep",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.88,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/claims-prep' matches primary domain 'Medical Coding and Pricing' with hybrid score 15.36. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "localEmb",
+    "name_with_owner": "Andalusia-Data-Science-Team/localEmb",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/localEmb' matches primary domain 'Construction' with hybrid score 0.46. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "sfda-scraper",
+    "name_with_owner": "Andalusia-Data-Science-Team/sfda-scraper",
+    "primary_domain": "Pharmacy",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/sfda-scraper' matches primary domain 'Pharmacy' with hybrid score 2.12. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "dist-plan",
+    "name_with_owner": "Andalusia-Data-Science-Team/dist-plan",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/dist-plan' matches primary domain 'Academy and L&D' with hybrid score 0.69. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "pl-translator",
+    "name_with_owner": "Andalusia-Data-Science-Team/pl-translator",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/pl-translator' matches primary domain 'Academy and L&D' with hybrid score 1.96. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "package-announcement-generator",
+    "name_with_owner": "Andalusia-Data-Science-Team/package-announcement-generator",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/package-announcement-generator' matches primary domain 'Academy and L&D' with hybrid score 1.62. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "nginx:alpine",
+      "app_data",
+      "app_network",
+      "nginx",
+      "web"
+    ]
+  },
+  {
+    "repo_name": "automapper-v3",
+    "name_with_owner": "Andalusia-Data-Science-Team/automapper-v3",
+    "primary_domain": "Finance",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/automapper-v3' matches primary domain 'Finance' with hybrid score 2.89. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "nginx:alpine",
+      "automapper-api",
+      "automapper-data",
+      "automapper-logs",
+      "automapper-net",
+      "automapper-outputs"
+    ]
+  },
+  {
+    "repo_name": "sem-clustering",
+    "name_with_owner": "Andalusia-Data-Science-Team/sem-clustering",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/sem-clustering' matches primary domain 'Academy and L&D' with hybrid score 1.79. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "social_media_agora",
+    "name_with_owner": "Andalusia-Data-Science-Team/social_media_agora",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/social_media_agora' matches primary domain 'Academy and L&D' with hybrid score 0.89. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Platform-Performance-Optimization-Budget-Impact-Simulation",
+    "name_with_owner": "Andalusia-Data-Science-Team/Platform-Performance-Optimization-Budget-Impact-Simulation",
+    "primary_domain": "Human Resources",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Platform-Performance-Optimization-Budget-Impact-Simulation' matches primary domain 'Human Resources' with hybrid score 1.12. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "\u0000",
+      "\u0000a\u0000n\u0000n\u0000o\u0000t\u0000a\u0000t\u0000e\u0000d\u0000-\u0000t\u0000y\u0000p\u0000e\u0000s\u0000",
+      "\u0000a\u0000n\u0000y\u0000i\u0000o\u0000",
+      "\u0000a\u0000r\u0000g\u0000o\u0000n\u00002\u0000-\u0000c\u0000f\u0000f\u0000i\u0000",
+      "\u0000a\u0000r\u0000g\u0000o\u0000n\u00002\u0000-\u0000c\u0000f\u0000f\u0000i\u0000-\u0000b\u0000i\u0000n\u0000d\u0000i\u0000n\u0000g\u0000s\u0000",
+      "\u0000a\u0000r\u0000r\u0000o\u0000w\u0000"
+    ]
+  },
+  {
+    "repo_name": "Doctor-Performance-in-Dental",
+    "name_with_owner": "Andalusia-Data-Science-Team/Doctor-Performance-in-Dental",
+    "primary_domain": "Human Resources",
+    "secondary_domains": [
+      "Clinical Informatics",
+      "Clinical Governance"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Doctor-Performance-in-Dental' matches primary domain 'Human Resources' with hybrid score 9.22. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "dash",
+      "dash-bootstrap-components",
+      "fireworks-ai",
+      "numpy",
+      "openpyxl",
+      "pandas"
+    ]
+  },
+  {
+    "repo_name": "MOH_Automation",
+    "name_with_owner": "Andalusia-Data-Science-Team/MOH_Automation",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MOH_Automation' matches primary domain 'Clinical Informatics' with hybrid score 12.91. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Brotli",
+      "Flask",
+      "Jinja2",
+      "MarkupSafe",
+      "annotated-types",
+      "anyio"
+    ]
+  },
+  {
+    "repo_name": "marketing-report-creator",
+    "name_with_owner": "Andalusia-Data-Science-Team/marketing-report-creator",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/marketing-report-creator' matches primary domain 'Academy and L&D' with hybrid score 2.12. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "Jinja2",
+      "MarkupSafe",
+      "Werkzeug",
+      "blinker",
+      "click"
+    ]
+  },
+  {
+    "repo_name": "Bank-Automation",
+    "name_with_owner": "Andalusia-Data-Science-Team/Bank-Automation",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Bank-Automation' matches primary domain 'Construction' with hybrid score 0.46. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Doctor-Performance-in-Medical",
+    "name_with_owner": "Andalusia-Data-Science-Team/Doctor-Performance-in-Medical",
+    "primary_domain": "Human Resources",
+    "secondary_domains": [
+      "Clinical Informatics",
+      "Academy and L&D"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Doctor-Performance-in-Medical' matches primary domain 'Human Resources' with hybrid score 6.66. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "MOH_Automation_V4",
+    "name_with_owner": "Andalusia-Data-Science-Team/MOH_Automation_V4",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MOH_Automation_V4' matches primary domain 'Clinical Informatics' with hybrid score 12.31. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Service-Hub-Chatbot",
+    "name_with_owner": "Andalusia-Data-Science-Team/Service-Hub-Chatbot",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [
+      "Human Resources",
+      "Clinical Informatics"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Service-Hub-Chatbot' matches primary domain 'Academy and L&D' with hybrid score 4.31. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "aiohttp",
+      "asyncio-throttle",
+      "beautifulsoup4",
+      "faiss-cpu",
+      "hashlib-compat",
+      "nest-asyncio"
+    ]
+  },
+  {
+    "repo_name": "ai_google_translation",
+    "name_with_owner": "Andalusia-Data-Science-Team/ai_google_translation",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/ai_google_translation' matches primary domain 'Clinical Informatics' with hybrid score 0.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Complaint-System",
+    "name_with_owner": "Andalusia-Data-Science-Team/Complaint-System",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Complaint-System' matches primary domain 'Academy and L&D' with hybrid score 4.33. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Clinic_Utilization",
+    "name_with_owner": "Andalusia-Data-Science-Team/Clinic_Utilization",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Clinic_Utilization' matches primary domain 'Construction' with hybrid score 1.55. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "bedManagement",
+    "name_with_owner": "Andalusia-Data-Science-Team/bedManagement",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/bedManagement' matches primary domain 'Clinical Informatics' with hybrid score 4.91. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "CodingSystem",
+    "name_with_owner": "Andalusia-Data-Science-Team/CodingSystem",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/CodingSystem' matches primary domain 'Construction' with hybrid score 0.52. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Chatbot",
+    "name_with_owner": "Andalusia-Data-Science-Team/Chatbot",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Chatbot' matches primary domain 'Construction' with hybrid score 0.96. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "eligbility_api",
+    "name_with_owner": "Andalusia-Data-Science-Team/eligbility_api",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/eligbility_api' matches primary domain 'Clinical Informatics' with hybrid score 0.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "MedSearch_Postgress",
+    "name_with_owner": "Andalusia-Data-Science-Team/MedSearch_Postgress",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MedSearch_Postgress' matches primary domain 'Medical Coding and Pricing' with hybrid score 1.39. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "pgadmin4:latest",
+      "postgres:15",
+      "default",
+      "postgres",
+      "postgres_data"
+    ]
+  },
+  {
+    "repo_name": "mlflow_learning",
+    "name_with_owner": "Andalusia-Data-Science-Team/mlflow_learning",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/mlflow_learning' matches primary domain 'Clinical Informatics' with hybrid score 0.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Coverage_Rejections",
+    "name_with_owner": "Andalusia-Data-Science-Team/Coverage_Rejections",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Coverage_Rejections' matches primary domain 'Construction' with hybrid score 0.55. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "MedSearch_DoseForm",
+    "name_with_owner": "Andalusia-Data-Science-Team/MedSearch_DoseForm",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/MedSearch_DoseForm' matches primary domain 'Clinical Informatics' with hybrid score 0.86. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "fastapi",
+      "pandas",
+      "polars",
+      "pydantic",
+      "fastapi",
+      "uvicorn"
+    ]
+  },
+  {
+    "repo_name": "CRM",
+    "name_with_owner": "Andalusia-Data-Science-Team/CRM",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Human Resources"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/CRM' matches primary domain 'Clinical Informatics' with hybrid score 6.38. Identified domain signatures: ['HIS'].",
+    "detected_standards": [
+      "HIS"
+    ],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "CHI",
+    "name_with_owner": "Andalusia-Data-Science-Team/CHI",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/CHI' matches primary domain 'Clinical Informatics' with hybrid score 2.89. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "XplainClaims",
+    "name_with_owner": "Andalusia-Data-Science-Team/XplainClaims",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/XplainClaims' matches primary domain 'Medical Coding and Pricing' with hybrid score 6.58. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "OPD_segmentation",
+    "name_with_owner": "Andalusia-Data-Science-Team/OPD_segmentation",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/OPD_segmentation' matches primary domain 'Academy and L&D' with hybrid score 1.05. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Topic-Mapping",
+    "name_with_owner": "Andalusia-Data-Science-Team/Topic-Mapping",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Topic-Mapping' matches primary domain 'Construction' with hybrid score 0.5. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Walk-In",
+    "name_with_owner": "Andalusia-Data-Science-Team/Walk-In",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Walk-In' matches primary domain 'Clinical Informatics' with hybrid score 0.82. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Technical-Descriptions",
+    "name_with_owner": "Andalusia-Data-Science-Team/Technical-Descriptions",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Technical-Descriptions' matches primary domain 'Construction' with hybrid score 0.47. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "CRM_Call_Results",
+    "name_with_owner": "Andalusia-Data-Science-Team/CRM_Call_Results",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/CRM_Call_Results' matches primary domain 'Construction' with hybrid score 0.54. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Process-Monitoring",
+    "name_with_owner": "Andalusia-Data-Science-Team/Process-Monitoring",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Process-Monitoring' matches primary domain 'Clinical Informatics' with hybrid score 0.86. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "aiohttp",
+      "flask",
+      "pandas",
+      "schedule"
+    ]
+  },
+  {
+    "repo_name": "resources",
+    "name_with_owner": "Andalusia-Data-Science-Team/resources",
+    "primary_domain": "Human Resources",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/resources' matches primary domain 'Human Resources' with hybrid score 1.74. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "BigBrother",
+    "name_with_owner": "Andalusia-Data-Science-Team/BigBrother",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/BigBrother' matches primary domain 'Medical Coding and Pricing' with hybrid score 2.26. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "no_show",
+    "name_with_owner": "Andalusia-Data-Science-Team/no_show",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Supply Chain"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/no_show' matches primary domain 'Clinical Informatics' with hybrid score 8.4. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "holidays",
+      "jupyter",
+      "missingno",
+      "pandas",
+      "pyodbc",
+      "schedule"
+    ]
+  },
+  {
+    "repo_name": "smart_orders_server",
+    "name_with_owner": "Andalusia-Data-Science-Team/smart_orders_server",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/smart_orders_server' matches primary domain 'Construction' with hybrid score 0.45. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "ffmpeg-python",
+      "flask",
+      "AHBS_AIServices",
+      "jupyter",
+      "pandas",
+      "pydub"
+    ]
+  },
+  {
+    "repo_name": "smart_order_client__jar",
+    "name_with_owner": "Andalusia-Data-Science-Team/smart_order_client__jar",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/smart_order_client__jar' matches primary domain 'Clinical Informatics' with hybrid score 0.82. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "java_voice_recorder",
+    "name_with_owner": "Andalusia-Data-Science-Team/java_voice_recorder",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/java_voice_recorder' matches primary domain 'Construction' with hybrid score 0.51. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "voice_recognition_service",
+    "name_with_owner": "Andalusia-Data-Science-Team/voice_recognition_service",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/voice_recognition_service' matches primary domain 'Construction' with hybrid score 0.44. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "smart_order_client",
+    "name_with_owner": "Andalusia-Data-Science-Team/smart_order_client",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/smart_order_client' matches primary domain 'Construction' with hybrid score 0.52. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "BertTokenizerServer",
+    "name_with_owner": "Andalusia-Data-Science-Team/BertTokenizerServer",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/BertTokenizerServer' matches primary domain 'Clinical Informatics' with hybrid score 0.85. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "ScreeningProject",
+    "name_with_owner": "Andalusia-Data-Science-Team/ScreeningProject",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/ScreeningProject' matches primary domain 'Clinical Informatics' with hybrid score 0.71. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "flask",
+      "AHBS_AIServices",
+      "chatGPT-api"
+    ]
+  },
+  {
+    "repo_name": "Doctor-Specialty-Performance",
+    "name_with_owner": "Andalusia-Data-Science-Team/Doctor-Specialty-Performance",
+    "primary_domain": "Human Resources",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Doctor-Specialty-Performance' matches primary domain 'Human Resources' with hybrid score 2.26. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "dash",
+      "dash-bootstrap-components",
+      "pandas",
+      "plotly"
+    ]
+  },
+  {
+    "repo_name": "similarity_gui",
+    "name_with_owner": "Andalusia-Data-Science-Team/similarity_gui",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/similarity_gui' matches primary domain 'Clinical Informatics' with hybrid score 0.89. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "WTForms",
+      "flask",
+      "pandas",
+      "werkzeug"
+    ]
+  },
+  {
+    "repo_name": "V99-GUI",
+    "name_with_owner": "Andalusia-Data-Science-Team/V99-GUI",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/V99-GUI' matches primary domain 'Construction' with hybrid score 0.52. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "object-detection-trials",
+    "name_with_owner": "Andalusia-Data-Science-Team/object-detection-trials",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/object-detection-trials' matches primary domain 'Construction' with hybrid score 0.45. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "colour",
+      "dash",
+      "facebook_business",
+      "flask-cors",
+      "matplotlib",
+      "numpy"
+    ]
+  },
+  {
+    "repo_name": "Sentiment_STD",
+    "name_with_owner": "Andalusia-Data-Science-Team/Sentiment_STD",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Sentiment_STD' matches primary domain 'Construction' with hybrid score 0.51. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "arabic_reshaper",
+      "dash",
+      "dash_core_components",
+      "dash_html_components",
+      "dash_table"
+    ]
+  },
+  {
+    "repo_name": "Smart-Care-API",
+    "name_with_owner": "Andalusia-Data-Science-Team/Smart-Care-API",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Smart-Care-API' matches primary domain 'Academy and L&D' with hybrid score 0.48. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "colour",
+      "dash",
+      "facebook_business",
+      "flask-cors",
+      "matplotlib",
+      "numpy"
+    ]
+  },
+  {
+    "repo_name": "Ads-investigation-tool",
+    "name_with_owner": "Andalusia-Data-Science-Team/Ads-investigation-tool",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Ads-investigation-tool' matches primary domain 'Academy and L&D' with hybrid score 0.84. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "colour",
+      "dash",
+      "facebook_business",
+      "matplotlib",
+      "numpy",
+      "openpyxl"
+    ]
+  },
+  {
+    "repo_name": "ScreeningTrials",
+    "name_with_owner": "Andalusia-Data-Science-Team/ScreeningTrials",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/ScreeningTrials' matches primary domain 'Clinical Informatics' with hybrid score 0.8. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Ai-server-manager",
+    "name_with_owner": "Andalusia-Data-Science-Team/Ai-server-manager",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Ai-server-manager' matches primary domain 'Clinical Informatics' with hybrid score 0.81. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "drug_search_engine",
+    "name_with_owner": "Andalusia-Data-Science-Team/drug_search_engine",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/drug_search_engine' matches primary domain 'Clinical Informatics' with hybrid score 0.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "HJH_Utilization",
+    "name_with_owner": "Andalusia-Data-Science-Team/HJH_Utilization",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/HJH_Utilization' matches primary domain 'Clinical Informatics' with hybrid score 1.19. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Supply_Chain_Consumption_Rate",
+    "name_with_owner": "Andalusia-Data-Science-Team/Supply_Chain_Consumption_Rate",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Supply_Chain_Consumption_Rate' matches primary domain 'Clinical Informatics' with hybrid score 0.82. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "ctr_prediction_lstm",
+    "name_with_owner": "Andalusia-Data-Science-Team/ctr_prediction_lstm",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/ctr_prediction_lstm' matches primary domain 'Clinical Informatics' with hybrid score 0.83. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "system-pipeline",
+    "name_with_owner": "Andalusia-Data-Science-Team/system-pipeline",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/system-pipeline' matches primary domain 'Academy and L&D' with hybrid score 1.59. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "PyArabic",
+      "Tashaphyne",
+      "beautifulsoup4",
+      "contractions",
+      "facebook_sdk",
+      "gensim"
+    ]
+  },
+  {
+    "repo_name": "drug-database-dosing",
+    "name_with_owner": "Andalusia-Data-Science-Team/drug-database-dosing",
+    "primary_domain": "Pharmacy",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/drug-database-dosing' matches primary domain 'Pharmacy' with hybrid score 8.01. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "diagnosis-integration",
+    "name_with_owner": "Andalusia-Data-Science-Team/diagnosis-integration",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/diagnosis-integration' matches primary domain 'Medical Coding and Pricing' with hybrid score 3.62. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "claims-api",
+    "name_with_owner": "Andalusia-Data-Science-Team/claims-api",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/claims-api' matches primary domain 'Medical Coding and Pricing' with hybrid score 8.27. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Health-Care",
+    "name_with_owner": "Andalusia-Data-Science-Team/Health-Care",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Health-Care' matches primary domain 'Clinical Informatics' with hybrid score 0.95. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "Flask_WTF",
+      "WTForms",
+      "numpy",
+      "pandas",
+      "scikit_learn"
+    ]
+  },
+  {
+    "repo_name": "V99",
+    "name_with_owner": "Andalusia-Data-Science-Team/V99",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/V99' matches primary domain 'Clinical Informatics' with hybrid score 3.03. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Text-FBpost-Analysis",
+    "name_with_owner": "Andalusia-Data-Science-Team/Text-FBpost-Analysis",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Text-FBpost-Analysis' matches primary domain 'Clinical Informatics' with hybrid score 0.8. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Ctr_prediction-FB",
+    "name_with_owner": "Andalusia-Data-Science-Team/Ctr_prediction-FB",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Ctr_prediction-FB' matches primary domain 'Construction' with hybrid score 0.54. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "emoji",
+      "gensim",
+      "joblib",
+      "nltk",
+      "numpy"
+    ]
+  },
+  {
+    "repo_name": "claimes-data-analysis",
+    "name_with_owner": "Andalusia-Data-Science-Team/claimes-data-analysis",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/claimes-data-analysis' matches primary domain 'Construction' with hybrid score 0.47. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Instegram_scrapper_selenium",
+    "name_with_owner": "Andalusia-Data-Science-Team/Instegram_scrapper_selenium",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Instegram_scrapper_selenium' matches primary domain 'Academy and L&D' with hybrid score 0.61. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "beautifulsoup4",
+      "requests",
+      "selenium"
+    ]
+  },
+  {
+    "repo_name": "cust_seg_quality_of_life_metrics",
+    "name_with_owner": "Andalusia-Data-Science-Team/cust_seg_quality_of_life_metrics",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/cust_seg_quality_of_life_metrics' matches primary domain 'Construction' with hybrid score 0.47. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "work",
+      "arabic-reshaper",
+      "work",
+      "work",
+      "certifi",
+      "work"
+    ]
+  },
+  {
+    "repo_name": "SentementAPIs_Second",
+    "name_with_owner": "Andalusia-Data-Science-Team/SentementAPIs_Second",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/SentementAPIs_Second' matches primary domain 'Construction' with hybrid score 0.51. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Flask",
+      "PyArabic",
+      "Tashaphyne",
+      "dash",
+      "dash_core_components",
+      "dash_html_components"
+    ]
+  },
+  {
+    "repo_name": "Model-Topic-documentation",
+    "name_with_owner": "Andalusia-Data-Science-Team/Model-Topic-documentation",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Model-Topic-documentation' matches primary domain 'Clinical Informatics' with hybrid score 1.56. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Sentiment-evaluation-function",
+    "name_with_owner": "Andalusia-Data-Science-Team/Sentiment-evaluation-function",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Sentiment-evaluation-function' matches primary domain 'Academy and L&D' with hybrid score 2.3. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "contractions",
+      "gensim",
+      "keras",
+      "keras_nightly",
+      "matplotlib",
+      "nltk"
+    ]
+  },
+  {
+    "repo_name": "facebook-comments-trial",
+    "name_with_owner": "Andalusia-Data-Science-Team/facebook-comments-trial",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/facebook-comments-trial' matches primary domain 'Construction' with hybrid score 0.49. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "WordOfMouth_SentimentAnalysis",
+    "name_with_owner": "Andalusia-Data-Science-Team/WordOfMouth_SentimentAnalysis",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/WordOfMouth_SentimentAnalysis' matches primary domain 'Clinical Informatics' with hybrid score 0.78. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "APIs_withTimeGraph",
+    "name_with_owner": "Andalusia-Data-Science-Team/APIs_withTimeGraph",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/APIs_withTimeGraph' matches primary domain 'Construction' with hybrid score 0.53. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Keras",
+      "PyArabic",
+      "Tashaphyne",
+      "gensim",
+      "matplotlib",
+      "nltk"
+    ]
+  },
+  {
+    "repo_name": "Claims-pdf-Extraction",
+    "name_with_owner": "Andalusia-Data-Science-Team/Claims-pdf-Extraction",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Claims-pdf-Extraction' matches primary domain 'Medical Coding and Pricing' with hybrid score 6.42. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Scrape-Vezeeta-Automate",
+    "name_with_owner": "Andalusia-Data-Science-Team/Scrape-Vezeeta-Automate",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Scrape-Vezeeta-Automate' matches primary domain 'Construction' with hybrid score 0.5. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "GoogleReviewsScraper___InsurancePatterns",
+    "name_with_owner": "Andalusia-Data-Science-Team/GoogleReviewsScraper___InsurancePatterns",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/GoogleReviewsScraper___InsurancePatterns' matches primary domain 'Academy and L&D' with hybrid score 1.68. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "feedback-wordcloud-levels",
+    "name_with_owner": "Andalusia-Data-Science-Team/feedback-wordcloud-levels",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/feedback-wordcloud-levels' matches primary domain 'Construction' with hybrid score 1.24. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "clusters_wordclouds",
+    "name_with_owner": "Andalusia-Data-Science-Team/clusters_wordclouds",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/clusters_wordclouds' matches primary domain 'Construction' with hybrid score 0.54. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Insurance-Rejection-Cliams",
+    "name_with_owner": "Andalusia-Data-Science-Team/Insurance-Rejection-Cliams",
+    "primary_domain": "Medical Coding and Pricing",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Insurance-Rejection-Cliams' matches primary domain 'Medical Coding and Pricing' with hybrid score 8.1. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Digital-Platforms-APIs",
+    "name_with_owner": "Andalusia-Data-Science-Team/Digital-Platforms-APIs",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.5,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Digital-Platforms-APIs' matches primary domain 'Clinical Informatics' with hybrid score 0.95. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "SC-consumption-rate-prediction",
+    "name_with_owner": "Andalusia-Data-Science-Team/SC-consumption-rate-prediction",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/SC-consumption-rate-prediction' matches primary domain 'Construction' with hybrid score 1.12. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Ad-img",
+    "name_with_owner": "Andalusia-Data-Science-Team/Ad-img",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Ad-img' matches primary domain 'Academy and L&D' with hybrid score 2.73. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Chest-Xray",
+    "name_with_owner": "Andalusia-Data-Science-Team/Chest-Xray",
+    "primary_domain": "Academy and L&D",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Chest-Xray' matches primary domain 'Academy and L&D' with hybrid score 1.62. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Transition-Patients",
+    "name_with_owner": "Andalusia-Data-Science-Team/Transition-Patients",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Transition-Patients' matches primary domain 'Clinical Informatics' with hybrid score 4.74. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Market-Segmentation",
+    "name_with_owner": "Andalusia-Data-Science-Team/Market-Segmentation",
+    "primary_domain": "Construction",
+    "secondary_domains": [],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Market-Segmentation' matches primary domain 'Construction' with hybrid score 1.28. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Patients-No-Show",
+    "name_with_owner": "Andalusia-Data-Science-Team/Patients-No-Show",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Patients-No-Show' matches primary domain 'Clinical Informatics' with hybrid score 9.01. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Deep-Learning-Model-for-Patient-s-Claims-Sentiment-Classification",
+    "name_with_owner": "Andalusia-Data-Science-Team/Deep-Learning-Model-for-Patient-s-Claims-Sentiment-Classification",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Medical Coding and Pricing"
+    ],
+    "confidence_score": 0.78,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Deep-Learning-Model-for-Patient-s-Claims-Sentiment-Classification' matches primary domain 'Clinical Informatics' with hybrid score 9.18. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  },
+  {
+    "repo_name": "Service-Packaging",
+    "name_with_owner": "Andalusia-Data-Science-Team/Service-Packaging",
+    "primary_domain": "Clinical Informatics",
+    "secondary_domains": [
+      "Medical Coding and Pricing"
+    ],
+    "confidence_score": 0.65,
+    "domain_justification": "Repository 'Andalusia-Data-Science-Team/Service-Packaging' matches primary domain 'Clinical Informatics' with hybrid score 4.91. Identified domain signatures: heuristic patterns.",
+    "detected_standards": [],
+    "project_status": "Active / In Development",
+    "key_technologies": [
+      "Codebase"
+    ]
+  }
+]
