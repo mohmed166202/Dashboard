@@ -3,6 +3,7 @@ import type { Requirement, DropdownLists } from "../types/tracker";
 import { InlineSelectCell, InlineTextCell } from "./InlineEditCells";
 import { useCreateRequirement, useUpdateRequirement } from "../hooks/useTrackerQueries";
 import { Plus, CheckCircle2, Clock, AlertTriangle, FileCode } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
 
 interface RequirementsSubPanelProps {
   projectId: string;
@@ -17,6 +18,7 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
   requirements,
   dropdowns,
 }) => {
+  const { isEditor, user } = useAuth();
   const [activeTab, setActiveTab] = useState<"ALL" | "Functional" | "Non-Functional">("ALL");
   const [isAdding, setIsAdding] = useState(false);
   const [newCat, setNewCat] = useState<"Functional" | "Non-Functional">("Functional");
@@ -34,7 +36,7 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
   const handleUpdate = async (reqId: string, updates: Partial<Requirement>) => {
     await updateReqMutation.mutateAsync({
       reqId,
-      updates: { ...updates, user: "WebUser" },
+      updates: { ...updates, user: user?.full_name || user?.email || "WebUser" },
     });
   };
 
@@ -55,7 +57,7 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
       requirement: newReqText.trim(),
       status: "Proposed",
       priority: "Medium",
-      user: "WebUser",
+      user: user?.full_name || user?.email || "WebUser",
     });
 
     setNewReqText("");
@@ -101,24 +103,35 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
             ))}
           </div>
 
-          <button
-            onClick={() => {
-              setNewCat("Functional");
-              setIsAdding(true);
-            }}
-            className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-amber-700 text-white font-medium rounded-lg hover:bg-amber-800 shadow-sm transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" /> Add FR
-          </button>
-          <button
-            onClick={() => {
-              setNewCat("Non-Functional");
-              setIsAdding(true);
-            }}
-            className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-stone-700 text-white font-medium rounded-lg hover:bg-stone-800 shadow-sm transition-colors"
-          >
-            <Plus className="w-3.5 h-3.5" /> Add NFR
-          </button>
+          {isEditor ? (
+            <>
+              <button
+                onClick={() => {
+                  setNewCat("Functional");
+                  setIsAdding(true);
+                }}
+                className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-amber-700 text-white font-medium rounded-lg hover:bg-amber-800 shadow-sm transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" /> Add FR
+              </button>
+              <button
+                onClick={() => {
+                  setNewCat("Non-Functional");
+                  setIsAdding(true);
+                }}
+                className="inline-flex items-center gap-1 text-xs px-2.5 py-1 bg-stone-700 text-white font-medium rounded-lg hover:bg-stone-800 shadow-sm transition-colors"
+              >
+                <Plus className="w-3.5 h-3.5" /> Add NFR
+              </button>
+            </>
+          ) : (
+            <span
+              className="text-[11px] text-stone-500 italic bg-stone-200/60 px-2 py-0.5 rounded cursor-help"
+              title="Read-only mode. Contact Admin for Editor permissions"
+            >
+              Read-only mode
+            </span>
+          )}
         </div>
       </div>
 
@@ -207,6 +220,7 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
                     <InlineTextCell
                       value={req.requirement}
                       onSave={(val) => handleUpdate(req.req_id, { requirement: val })}
+                      disabled={!isEditor}
                     />
                   </td>
                   <td className="py-1.5 px-3">
@@ -216,6 +230,7 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
                       onSave={(val) => handleUpdate(req.req_id, { status: val })}
                       badgeStyle
                       colorMap={statusColors}
+                      disabled={!isEditor}
                     />
                   </td>
                   <td className="py-1.5 px-3">
@@ -223,12 +238,14 @@ export const RequirementsSubPanel: React.FC<RequirementsSubPanelProps> = ({
                       value={req.priority}
                       options={dropdowns?.req_priorities || []}
                       onSave={(val) => handleUpdate(req.req_id, { priority: val })}
+                      disabled={!isEditor}
                     />
                   </td>
                   <td className="py-1.5 px-3">
                     <InlineTextCell
                       value={req.owner}
                       onSave={(val) => handleUpdate(req.req_id, { owner: val })}
+                      disabled={!isEditor}
                     />
                   </td>
                 </tr>

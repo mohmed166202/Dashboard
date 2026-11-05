@@ -193,13 +193,20 @@ export const InteractiveTrackerTab: React.FC = () => {
             >
               <Download className="w-3.5 h-3.5 text-stone-500" /> Export CSV
             </button>
-            {isEditor && (
+            {isEditor ? (
               <button
                 onClick={() => setIsAddModalOpen(true)}
                 className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-lg bg-amber-800 text-white hover:bg-amber-900 shadow-sm transition-colors"
               >
                 <Plus className="w-4 h-4" /> Add Project
               </button>
+            ) : (
+              <span
+                className="text-[11px] text-stone-500 italic bg-stone-100 border border-stone-200 px-3 py-1.5 rounded-lg cursor-help flex items-center gap-1"
+                title="Read-only mode. Contact Admin for Editor permissions"
+              >
+                Read-only mode
+              </span>
             )}
           </div>
         </div>
