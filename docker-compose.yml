@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: andalusia_ai_dashboard
+    restart: unless-stopped
+    ports:
+      - "8055:8055"
+    volumes:
+      - ./data:/app/data
+      - ./AI_Project_Tracker.xlsx:/app/AI_Project_Tracker.xlsx
+    environment:
+      - PORT=8055
+      - WORKERS=4
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8055/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+

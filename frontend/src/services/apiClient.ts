@@ -20,13 +20,13 @@ import type {
 } from "../types/api";
 
 const BASE_URL =
-  (import.meta.env.VITE_API_BASE_URL as string | undefined) ??
-  "http://localhost:8000";
+  (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
 
 // ─── Core Fetch Wrapper ───────────────────────────────────────────────────────
 
 async function apiFetch<T>(path: string, params?: Record<string, string | number | undefined>): Promise<T> {
-  const url = new URL(`${BASE_URL}${path}`);
+  const base = BASE_URL || (typeof window !== "undefined" ? window.location.origin : "http://localhost:8055");
+  const url = new URL(path, base);
 
   if (params) {
     for (const [key, value] of Object.entries(params)) {

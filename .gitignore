@@ -54,3 +54,4 @@ Thumbs.db
 output/dossiers/
 output/reports/*.json
 ~$*
+server.log

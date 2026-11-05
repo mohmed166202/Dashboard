@@ -1,0 +1,103 @@
+# Azure DevOps Multi-Stage CI/CD Pipeline
+# Project: Andalusia Healthcare Portfolio & Intelligent Analytics Dashboard
+# Trigger: main / master branch pushes
+
+trigger:
+  branches:
+    include:
+      - main
+      - master
+  paths:
+    include:
+      - frontend/**
+      - data/**
+      - server.py
+      - AI_Project_Tracker.xlsx
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  PYTHON_VERSION: '3.9'
+  NODE_VERSION: '20.x'
+  SERVICE_PORT: '8055'
+
+stages:
+  # ─── Stage 1: Build & Package Frontend ──────────────────────────────────────
+  - stage: BuildFrontend
+    displayName: '1. Build React 19 Frontend'
+    jobs:
+      - job: Build
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: $(NODE_VERSION)
+            displayName: 'Setup Node.js $(NODE_VERSION)'
+
+          - script: |
+              cd frontend
+              npm ci
+              npm run build
+            displayName: 'NPM Install & Vite Production Build'
+
+          - publish: frontend/dist
+            artifact: frontend-dist
+            displayName: 'Publish Frontend Build Artifact'
+
+  # ─── Stage 2: Test & Migrate Backend ────────────────────────────────────────
+  - stage: TestAndValidate
+    displayName: '2. Validate Backend & Run Migration'
+    dependsOn: BuildFrontend
+    jobs:
+      - job: BackendTests
+        steps:
+          - task: UsePythonVersion@0
+            inputs:
+              versionSpec: $(PYTHON_VERSION)
+            displayName: 'Setup Python $(PYTHON_VERSION)'
+
+          - download: current
+            artifact: frontend-dist
+            displayName: 'Download Frontend Artifact'
+
+          - script: |
+              mkdir -p frontend/dist
+              cp -r $(Pipeline.Workspace)/frontend-dist/* frontend/dist/
+              python3 -m venv .venv
+              source .venv/bin/activate
+              pip install --upgrade pip
+              pip install -r requirements.txt
+            displayName: 'Install Python Dependencies'
+
+          - script: |
+              source .venv/bin/activate
+              # Run idempotent Excel -> SQLite migration
+              python data/migration.py
+            displayName: 'Execute Database Migration'
+
+          - script: |
+              source .venv/bin/activate
+              # Launch local daemon for automated contract testing
+              nohup uvicorn server:app --host 0.0.0.0 --port 8055 --workers 2 > test_server.log 2>&1 &
+              sleep 4
+              # Execute Phase 2 Full API & WebSocket Suite
+              python test_phase2_suite.py
+            displayName: 'Execute Automated REST API & WebSocket Test Suite'
+
+  # ─── Stage 3: Deploy to Production ──────────────────────────────────────────
+  - stage: ProductionDeploy
+    displayName: '3. Zero-Downtime Deploy'
+    dependsOn: TestAndValidate
+    condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/main', 'refs/heads/master'))
+    jobs:
+      - deployment: DeployProduction
+        environment: 'Andalusia-Production'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - script: |
+                    echo "Deploying Andalusia AI Dashboard..."
+                    chmod +x deploy.sh
+                    ./deploy.sh
+                  displayName: 'Execute One-Click Production Deployment'

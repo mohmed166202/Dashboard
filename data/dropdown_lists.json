@@ -1,0 +1,444 @@
+{
+  "types": [
+    {
+      "code": "AI Product",
+      "label": "AI Product",
+      "description": "A complete, user-facing solution with its own interface, defined end users and an ongoing roadmap, used directly by staff as a tool in their daily work (e.g. AI dictation app)."
+    },
+    {
+      "code": "AI System",
+      "label": "AI System",
+      "description": "An AI capability embedded within existing enterprise systems or workflows (such as the HIS or EMR) that operates largely in the background to automate or optimise a process (e.g. OPD scheduling optimisation)."
+    },
+    {
+      "code": "AI Service",
+      "label": "AI Service",
+      "description": "An AI capability delivered on demand to a specific team or to other systems, either as an analytical service producing outputs for a business function or as a reusable API (e.g. CPG compliance scoring for the audit team)."
+    }
+  ],
+  "phases": [
+    {
+      "code": "Idea",
+      "label": "Idea",
+      "stage": "Pre-delivery",
+      "description": "A use case has been proposed and logged in the portfolio but not yet assessed."
+    },
+    {
+      "code": "Assessment",
+      "label": "Assessment",
+      "stage": "Pre-delivery",
+      "description": "Evaluating feasibility, business value, data availability, clinical and privacy risk, and cost to decide whether to proceed."
+    },
+    {
+      "code": "Not Started",
+      "label": "Not Started",
+      "stage": "Pre-delivery",
+      "description": "Approved and prioritised, but delivery work has not yet begun."
+    },
+    {
+      "code": "Planning",
+      "label": "Planning",
+      "stage": "Pre-delivery",
+      "description": "Defining scope, business case, success KPIs, stakeholders, resources and timeline."
+    },
+    {
+      "code": "Data Preparation",
+      "label": "Data Preparation",
+      "stage": "Delivery",
+      "description": "Securing data access and privacy approvals, then extracting, cleaning and labelling the data needed to build the solution."
+    },
+    {
+      "code": "Development",
+      "label": "Development",
+      "stage": "Delivery",
+      "description": "Building the solution, including model development, integration and interface work."
+    },
+    {
+      "code": "Evaluation",
+      "label": "Evaluation",
+      "stage": "Delivery",
+      "description": "Technical and clinical validation against agreed accuracy, safety and performance criteria, including clinical governance review where applicable."
+    },
+    {
+      "code": "UAT",
+      "label": "UAT",
+      "stage": "Delivery",
+      "description": "End users test the solution in realistic scenarios to confirm it meets business needs."
+    },
+    {
+      "code": "Pilot",
+      "label": "Pilot",
+      "stage": "Delivery",
+      "description": "Limited live use in one department or hospital to confirm real-world performance, adoption and benefits before wider rollout."
+    },
+    {
+      "code": "Deployment",
+      "label": "Deployment",
+      "stage": "Delivery",
+      "description": "Releasing the solution to production, including go-live preparation, training and rollout."
+    },
+    {
+      "code": "Scale-up",
+      "label": "Scale-up",
+      "stage": "Delivery",
+      "description": "Extending the solution to additional departments, hospitals or user groups after a successful pilot or initial deployment."
+    },
+    {
+      "code": "Live",
+      "label": "Live",
+      "stage": "Operation",
+      "description": "In production use under early-life monitoring to stabilise performance and track benefits."
+    },
+    {
+      "code": "Benefits Review",
+      "label": "Benefits Review",
+      "stage": "Operation",
+      "description": "Formal post-implementation review comparing actual results with the expected KPIs in the business case."
+    },
+    {
+      "code": "Support",
+      "label": "Support",
+      "stage": "Operation",
+      "description": "Handed over to business-as-usual, with ongoing maintenance, monitoring of model performance and drift, and periodic review."
+    },
+    {
+      "code": "Enhancement",
+      "label": "Enhancement",
+      "stage": "Operation",
+      "description": "A new improvement cycle on a live solution, such as added features, model retraining or expanded scope."
+    },
+    {
+      "code": "On Hold",
+      "label": "On Hold",
+      "stage": "Closure / Exception",
+      "description": "Formally paused by decision of the sponsor or steering committee, pending a resolution, priority or resource change."
+    },
+    {
+      "code": "Cancelled",
+      "label": "Cancelled",
+      "stage": "Closure / Exception",
+      "description": "Formally stopped before completion because it is no longer viable, valuable or a priority."
+    },
+    {
+      "code": "Retired",
+      "label": "Retired",
+      "stage": "Closure / Exception",
+      "description": "A previously live solution that has been decommissioned or replaced and is no longer in use."
+    }
+  ],
+  "statuses": [
+    {
+      "code": "On Track",
+      "label": "On Track",
+      "description": "Progressing according to the planned scope, timeline and resources, with no significant issues."
+    },
+    {
+      "code": "At Risk",
+      "label": "At Risk",
+      "description": "Risks or issues have been identified that may affect scope, timeline or quality if not addressed; corrective action is needed."
+    },
+    {
+      "code": "Delayed",
+      "label": "Delayed",
+      "description": "Behind the original schedule, but the cause is understood and a revised date has been agreed."
+    },
+    {
+      "code": "Off Track",
+      "label": "Off Track",
+      "description": "Significantly deviating from plan on timeline, budget, scope or quality; a recovery plan and sponsor attention are required."
+    },
+    {
+      "code": "Blocked",
+      "label": "Blocked",
+      "description": "Progress has stopped due to a dependency or issue the team cannot resolve on its own and requires escalation."
+    },
+    {
+      "code": "Pending Decision",
+      "label": "Pending Decision",
+      "description": "Waiting for an approval or decision from the sponsor, a committee or governance body before work can continue."
+    },
+    {
+      "code": "Under Review",
+      "label": "Under Review",
+      "description": "The project is being reassessed (for example a health check, scope change or re-prioritisation) and its direction may change."
+    },
+    {
+      "code": "Not Reported",
+      "label": "Not Reported",
+      "description": "No status update has been submitted within the required reporting period."
+    },
+    {
+      "code": "Not Applicable",
+      "label": "Not Applicable",
+      "description": "Status tracking does not apply in the current phase (e.g. Idea, Cancelled or Retired)."
+    },
+    {
+      "code": "Done",
+      "label": "Done",
+      "description": "All objectives for the current phase or the project have been achieved and formally accepted."
+    }
+  ],
+  "domains": [
+    {
+      "code": "1. Clinical Informatics",
+      "label": "1. Clinical Informatics",
+      "description": "The technology behind patient care, including the hospital information system (HIS), electronic medical records, clinical data accuracy, and how doctors and nurses use digital tools in daily work."
+    },
+    {
+      "code": "2. Clinical Governance",
+      "label": "2. Clinical Governance",
+      "description": "The quality and safety of patient care, including clinical policies, accreditation (such as JCI and GAHAR), incident reporting, audits, infection control, and clinical outcome KPIs."
+    },
+    {
+      "code": "3. Medical Coding and Pricing",
+      "label": "3. Medical Coding and Pricing",
+      "description": "Turning diagnoses and procedures into standard codes (ICD and CPT), setting service prices and packages, and making sure claims to insurers and contracted companies are accurate and get paid."
+    },
+    {
+      "code": "4. Human Resources",
+      "label": "4. Human Resources",
+      "description": "The workforce, including hiring doctors, nurses and staff, credentialing, payroll, performance management, retention, and staffing levels across the branches."
+    },
+    {
+      "code": "5. Academy and L&D",
+      "label": "5. Academy and L&D",
+      "description": "Staff training and development, including clinical and non-clinical courses, onboarding, CME for doctors, nursing programs, certifications, and building future leaders."
+    },
+    {
+      "code": "6. Pharmacy",
+      "label": "6. Pharmacy",
+      "description": "Everything about medicines, including the formulary, drug stock, dispensing, medication safety, controlled drugs, and pharmacy revenue."
+    },
+    {
+      "code": "7. Supply Chain",
+      "label": "7. Supply Chain",
+      "description": "Getting the right items at the right cost, including procurement, vendor management, warehouses and inventory, and the availability of medical supplies and equipment."
+    },
+    {
+      "code": "8. Finance",
+      "label": "8. Finance",
+      "description": "The company’s financial health, including revenue by hospital and department, costs, budgets, cash collection, insurance receivables, profitability, and financial reporting."
+    },
+    {
+      "code": "9. Construction",
+      "label": "9. Construction",
+      "description": "New buildings and expansions, such as the AOH hospital project. This covers project timelines, budgets, contractors, engineering packages, and long-lead equipment."
+    }
+  ],
+  "teams": [
+    {
+      "code": "AI 02",
+      "label": "AI 02"
+    }
+  ],
+  "priorities": [
+    {
+      "code": "High",
+      "label": "High"
+    },
+    {
+      "code": "Medium",
+      "label": "Medium"
+    },
+    {
+      "code": "Low",
+      "label": "Low"
+    }
+  ],
+  "req_categories": [
+    {
+      "code": "Functional",
+      "label": "Functional",
+      "description": "What the solution does: a feature, capability or behaviour visible to users or other systems."
+    },
+    {
+      "code": "Non-Functional",
+      "label": "Non-Functional",
+      "description": "How well the solution does it: quality attributes such as speed, security, privacy, reliability and cost."
+    }
+  ],
+  "nfr_areas": [
+    {
+      "code": "Performance",
+      "label": "Performance",
+      "description": "Response time, processing time and throughput targets."
+    },
+    {
+      "code": "Scalability",
+      "label": "Scalability",
+      "description": "Number of concurrent users, sessions or records the solution must handle."
+    },
+    {
+      "code": "Availability & Reliability",
+      "label": "Availability & Reliability",
+      "description": "Uptime, failover, retries, recovery and protection against data loss."
+    },
+    {
+      "code": "Security",
+      "label": "Security",
+      "description": "Authentication, access control, secrets management and security testing."
+    },
+    {
+      "code": "Privacy & Data Protection",
+      "label": "Privacy & Data Protection",
+      "description": "Handling of patient and personal data, anonymisation and data minimisation."
+    },
+    {
+      "code": "Accuracy & Clinical Safety",
+      "label": "Accuracy & Clinical Safety",
+      "description": "Correctness of AI output, no invented content, clinical validation and safety checks."
+    },
+    {
+      "code": "Data Integrity",
+      "label": "Data Integrity",
+      "description": "Completeness, freshness and consistency of stored and processed data."
+    },
+    {
+      "code": "Usability",
+      "label": "Usability",
+      "description": "Ease of use, language support and user workflow."
+    },
+    {
+      "code": "Interoperability & Integration",
+      "label": "Interoperability & Integration",
+      "description": "Integration with HIS, data warehouse, SharePoint, Teams and other systems."
+    },
+    {
+      "code": "Compliance & Regulatory",
+      "label": "Compliance & Regulatory",
+      "description": "Data residency, regulatory and internal compliance approvals."
+    },
+    {
+      "code": "Auditability & Observability",
+      "label": "Auditability & Observability",
+      "description": "Audit trails, logging, monitoring and usage reporting."
+    },
+    {
+      "code": "Maintainability & Operability",
+      "label": "Maintainability & Operability",
+      "description": "Configuration, release control, ease of change and continuous improvement."
+    },
+    {
+      "code": "Cost Efficiency",
+      "label": "Cost Efficiency",
+      "description": "AI and infrastructure cost targets and cost tracking."
+    },
+    {
+      "code": "Platform & Hosting",
+      "label": "Platform & Hosting",
+      "description": "Required platform, cloud provider and AI model providers."
+    },
+    {
+      "code": "Scope & Constraints",
+      "label": "Scope & Constraints",
+      "description": "Agreed boundaries and limitations of the solution."
+    }
+  ],
+  "request_types": [
+    {
+      "code": "Baseline",
+      "label": "Baseline",
+      "description": "An existing capability of the current live or retired version, recorded for reference."
+    },
+    {
+      "code": "New Project",
+      "label": "New Project",
+      "description": "A requirement for a solution that does not exist yet."
+    },
+    {
+      "code": "New Version",
+      "label": "New Version",
+      "description": "A requirement delivered as part of a major new version of an existing solution."
+    },
+    {
+      "code": "BR / CR",
+      "label": "BR / CR",
+      "description": "A business request or change request on an existing solution."
+    }
+  ],
+  "req_priorities": [
+    {
+      "code": "Critical",
+      "label": "Critical",
+      "description": "Essential for go-live; the release cannot proceed without it, or it addresses a patient-safety, legal or security risk."
+    },
+    {
+      "code": "High",
+      "label": "High",
+      "description": "Important for business value; expected in the current release."
+    },
+    {
+      "code": "Medium",
+      "label": "Medium",
+      "description": "Useful improvement; delivered if time and capacity allow, otherwise in the next release."
+    },
+    {
+      "code": "Low",
+      "label": "Low",
+      "description": "Nice to have; can be deferred without significant impact."
+    }
+  ],
+  "req_statuses": [
+    {
+      "code": "Proposed",
+      "label": "Proposed",
+      "description": "Raised but not yet reviewed or agreed."
+    },
+    {
+      "code": "Approved",
+      "label": "Approved",
+      "description": "Agreed by the business owner and planned for delivery."
+    },
+    {
+      "code": "In Progress",
+      "label": "In Progress",
+      "description": "Currently being built."
+    },
+    {
+      "code": "Implemented",
+      "label": "Implemented",
+      "description": "Built and available, awaiting or undergoing testing."
+    },
+    {
+      "code": "Verified",
+      "label": "Verified",
+      "description": "Tested and accepted (e.g. UAT, load or security test passed)."
+    },
+    {
+      "code": "Deferred",
+      "label": "Deferred",
+      "description": "Postponed to a later release."
+    },
+    {
+      "code": "Rejected",
+      "label": "Rejected",
+      "description": "Not to be delivered."
+    }
+  ],
+  "team_members": [
+    {
+      "code": "Ali",
+      "label": "Ali"
+    },
+    {
+      "code": "Doha",
+      "label": "Doha"
+    },
+    {
+      "code": "Essam",
+      "label": "Essam"
+    },
+    {
+      "code": "Fayrouz",
+      "label": "Fayrouz"
+    },
+    {
+      "code": "Essam",
+      "label": "Essam"
+    },
+    {
+      "code": "Hamdy",
+      "label": "Hamdy"
+    }
+  ]
+}
