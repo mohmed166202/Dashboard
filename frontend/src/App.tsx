@@ -38,7 +38,7 @@ export const App: FC = () => {
       />
 
       {/* ── Main Content Container ────────────────────────────────────────── */}
-      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 space-y-6">
+      <main className="flex-1 w-full px-4 sm:px-6 py-4 sm:py-6 space-y-6">
         {/* KPI Strip (Always visible for quick executive context) */}
         {summary && kpis && (
           <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-3">

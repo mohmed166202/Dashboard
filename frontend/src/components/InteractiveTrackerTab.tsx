@@ -17,6 +17,7 @@ import {
 } from "../hooks/useTrackerQueries";
 import { useTrackerWebSocket } from "../hooks/useTrackerWebSocket";
 import { useQueryClient } from "@tanstack/react-query";
+import { useAuth } from "../context/AuthContext";
 import {
   Search,
   Filter,
@@ -33,6 +34,7 @@ import {
 
 export const InteractiveTrackerTab: React.FC = () => {
   const queryClient = useQueryClient();
+  const { isEditor, user } = useAuth();
 
   // Search & Filter State
   const [searchTerm, setSearchTerm] = useState("");
@@ -108,7 +110,7 @@ export const InteractiveTrackerTab: React.FC = () => {
       updates: {
         ...updates,
         expected_updated_at: current?.updated_at,
-        user: "WebUser",
+        user: user?.full_name || user?.email || "WebUser",
       },
     });
   };
@@ -191,12 +193,14 @@ export const InteractiveTrackerTab: React.FC = () => {
             >
               <Download className="w-3.5 h-3.5 text-stone-500" /> Export CSV
             </button>
-            <button
-              onClick={() => setIsAddModalOpen(true)}
-              className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-lg bg-amber-800 text-white hover:bg-amber-900 shadow-sm transition-colors"
-            >
-              <Plus className="w-4 h-4" /> Add Project
-            </button>
+            {isEditor && (
+              <button
+                onClick={() => setIsAddModalOpen(true)}
+                className="inline-flex items-center gap-1.5 text-xs font-bold px-3.5 py-2 rounded-lg bg-amber-800 text-white hover:bg-amber-900 shadow-sm transition-colors"
+              >
+                <Plus className="w-4 h-4" /> Add Project
+              </button>
+            )}
           </div>
         </div>
 
@@ -334,6 +338,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                           <InlineTextCell
                             value={proj.project}
                             onSave={(val) => handleProjectUpdate(proj.id, { project: val })}
+                            disabled={!isEditor}
                           />
                         </td>
 
@@ -343,6 +348,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                             value={proj.domain}
                             options={dropdowns?.domains || []}
                             onSave={(val) => handleProjectUpdate(proj.id, { domain: val })}
+                            disabled={!isEditor}
                           />
                         </td>
 
@@ -352,6 +358,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                             value={proj.phase}
                             options={dropdowns?.phases || []}
                             onSave={(val) => handleProjectUpdate(proj.id, { phase: val })}
+                            disabled={!isEditor}
                           />
                         </td>
 
@@ -363,6 +370,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                             onSave={(val) => handleProjectUpdate(proj.id, { status: val })}
                             badgeStyle
                             colorMap={statusColorMap}
+                            disabled={!isEditor}
                           />
                         </td>
 
@@ -373,6 +381,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                             onSave={(val) =>
                               handleProjectUpdate(proj.id, { percent_complete: val })
                             }
+                            disabled={!isEditor}
                           />
                         </td>
 
@@ -384,6 +393,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                             onSave={(val) => handleProjectUpdate(proj.id, { priority: val })}
                             badgeStyle
                             colorMap={priorityColorMap}
+                            disabled={!isEditor}
                           />
                         </td>
 
@@ -394,6 +404,7 @@ export const InteractiveTrackerTab: React.FC = () => {
                             onSave={(val) =>
                               handleProjectUpdate(proj.id, { business_owner: val })
                             }
+                            disabled={!isEditor}
                           />
                         </td>
 

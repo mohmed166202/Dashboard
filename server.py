@@ -19,10 +19,16 @@ from __future__ import annotations
 import asyncio
 import json
 import sqlite3
+import os
+import bcrypt
+import jwt
 from contextlib import asynccontextmanager
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
+from dotenv import load_dotenv
+
+load_dotenv()
 
 from eval_type_backport import install_patch
 install_patch()
@@ -31,6 +37,8 @@ from fastapi import (
     FastAPI,
     HTTPException,
     Query,
+    Depends,
+    Header,
     WebSocket,
     WebSocketDisconnect,
     status,
@@ -38,7 +46,12 @@ from fastapi import (
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, EmailStr, field_validator
+
+# ── JWT & Auth Configuration ──────────────────────────────────────────────────
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "andalusia-healthcare-ai-portfolio-secret-2026")
+JWT_ALGORITHM = "HS256"
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7  # 7 days
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
 BASE_DIR = Path(__file__).parent.resolve()
@@ -187,6 +200,101 @@ class KPISummaryUpdate(BaseModel):
     current_value: float
     user: Optional[str] = "WebUser"
 
+# ── User & Auth Models ────────────────────────────────────────────────────────
+class UserRegister(BaseModel):
+    email: EmailStr
+    full_name: str
+    password: str
+
+class UserLogin(BaseModel):
+    username_or_email: Optional[str] = None
+    email: Optional[str] = None
+    password: str
+
+class UserResponse(BaseModel):
+    id: int
+    email: str
+    full_name: str
+    role: str
+    is_active: bool
+    created_at: Optional[str] = None
+    last_login: Optional[str] = None
+
+class RoleUpdate(BaseModel):
+    role: str # 'admin', 'editor', 'viewer'
+
+    @field_validator("role")
+    @classmethod
+    def validate_role(cls, v: str) -> str:
+        clean = v.lower().strip()
+        if clean not in ("admin", "editor", "viewer"):
+            raise ValueError("Role must be one of: 'admin', 'editor', 'viewer'")
+        return clean
+
+# ── Auth Helper Functions ─────────────────────────────────────────────────────
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    try:
+        return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+    except Exception:
+        return False
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+    to_encode = data.copy()
+    expire = datetime.utcnow() + (expires_delta or timedelta(minutes=JWT_ACCESS_TOKEN_EXPIRE_MINUTES))
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, JWT_SECRET_KEY, algorithm=JWT_ALGORITHM)
+
+async def get_current_user_optional(authorization: Optional[str] = Header(None)) -> Optional[Dict[str, Any]]:
+    """Extract user payload from Authorization Bearer token without raising 401 if missing."""
+    if not authorization or not authorization.startswith("Bearer "):
+        return None
+    token = authorization.split("Bearer ", 1)[1].strip()
+    try:
+        payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=[JWT_ALGORITHM])
+        email = payload.get("sub")
+        if not email:
+            return None
+        conn = get_db_connection()
+        user = conn.execute("SELECT id, email, full_name, role, is_active FROM users WHERE email = ?", (email,)).fetchone()
+        conn.close()
+        if not user or not user["is_active"]:
+            return None
+        return dict(user)
+    except Exception:
+        return None
+
+async def get_current_user(authorization: Optional[str] = Header(None)) -> Dict[str, Any]:
+    """Strict authentication dependency requiring valid token."""
+    user = await get_current_user_optional(authorization)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Authentication required. Please provide a valid Bearer token.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    return user
+
+def require_role(required_role: str):
+    """
+    Role check dependency factory.
+    - 'viewer': any authenticated user (or viewers, editors, admins)
+    - 'editor': editors and admins
+    - 'admin': admins only
+    """
+    async def role_checker(current_user: Dict[str, Any] = Depends(get_current_user)) -> Dict[str, Any]:
+        user_role = current_user.get("role", "viewer")
+        hierarchy = {"viewer": 1, "editor": 2, "admin": 3}
+        if hierarchy.get(user_role, 0) < hierarchy.get(required_role, 1):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail=f"Forbidden: Action requires '{required_role}' privileges (current role: '{user_role}').",
+            )
+        return current_user
+    return role_checker
+
 # ── Audit Logger Helper ───────────────────────────────────────────────────────
 def record_audit(
     conn: sqlite3.Connection,
@@ -207,10 +315,55 @@ def record_audit(
     )
 
 # ── FastAPI App Setup ─────────────────────────────────────────────────────────
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Ensure default admin from env/secrets exists on startup
+    admin_user = os.getenv("ADMIN_USERNAME", "mohamed-galal")
+    admin_pw = os.getenv("ADMIN_PASSWORD", "Mm@01000713965$")
+    admin_email = os.getenv("ADMIN_EMAIL", "mohamed-galal@andalusia.net")
+
+    try:
+        conn = get_db_connection()
+        # Ensure username column exists
+        cols = [c[1] for c in conn.execute("PRAGMA table_info(users)").fetchall()]
+        if "username" not in cols:
+            conn.execute("ALTER TABLE users ADD COLUMN username TEXT")
+
+        existing = conn.execute(
+            "SELECT id FROM users WHERE username = ? OR email = ?",
+            (admin_user, admin_email),
+        ).fetchone()
+
+        pw_hash = hash_password(admin_pw)
+        if existing:
+            conn.execute(
+                """
+                UPDATE users
+                SET username = ?, full_name = ?, hashed_password = ?, role = 'admin', is_active = 1
+                WHERE id = ?
+                """,
+                (admin_user, "Mohamed Galal", pw_hash, existing[0]),
+            )
+        else:
+            conn.execute(
+                """
+                INSERT INTO users (username, email, full_name, hashed_password, role, is_active)
+                VALUES (?, ?, ?, ?, 'admin', 1)
+                """,
+                (admin_user, admin_email, "Mohamed Galal", pw_hash),
+            )
+        conn.commit()
+        conn.close()
+    except Exception as e:
+        print(f"[Warning] Admin seed on startup: {e}")
+
+    yield
+
 app = FastAPI(
     title="Andalusia AI Project Tracker & Analytics API",
     description="High-performance backend API with SQLite WAL, real-time WebSockets, full CRUD and benchmark analytics.",
     version="2.1.0",
+    lifespan=lifespan,
 )
 
 app.add_middleware(
@@ -240,6 +393,176 @@ def health():
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Database error: {str(e)}")
+
+# ── Authentication & RBAC API Endpoints ───────────────────────────────────────
+@app.post("/api/auth/register", status_code=status.HTTP_201_CREATED)
+def register_user(payload: UserRegister):
+    """
+    Public sign-up endpoint.
+    - First registered user automatically becomes 'admin'.
+    - All subsequent users default to 'viewer' until promoted by an admin.
+    """
+    conn = get_db_connection()
+    clean_email = payload.email.lower().strip()
+
+    # Check if user already exists
+    existing = conn.execute("SELECT id FROM users WHERE email = ?", (clean_email,)).fetchone()
+    if existing:
+        conn.close()
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=f"An account with email '{clean_email}' already exists.",
+        )
+
+    # Check if this is the very first user in the database
+    total_users = conn.execute("SELECT count(*) FROM users").fetchone()[0]
+    assigned_role = "admin" if total_users == 0 else "viewer"
+
+    hashed = hash_password(payload.password)
+    with conn:
+        cursor = conn.execute(
+            """
+            INSERT INTO users (email, full_name, hashed_password, role, is_active)
+            VALUES (?, ?, ?, ?, 1)
+            """,
+            (clean_email, payload.full_name.strip(), hashed, assigned_role),
+        )
+        new_id = cursor.lastrowid
+        record_audit(
+            conn, "user", str(new_id), "INSERT", "role", None, assigned_role, clean_email
+        )
+
+    # Fetch created user record
+    created = conn.execute(
+        "SELECT id, email, full_name, role, is_active, created_at FROM users WHERE id = ?",
+        (new_id,),
+    ).fetchone()
+    conn.close()
+
+    user_dict = dict(created)
+    user_dict["is_active"] = bool(user_dict["is_active"])
+
+    # Issue access token immediately upon registration
+    token = create_access_token({"sub": clean_email, "role": assigned_role})
+    return {
+        "user": user_dict,
+        "access_token": token,
+        "token_type": "bearer",
+        "message": f"Account created with role '{assigned_role}'.",
+    }
+
+@app.post("/api/auth/login")
+def login_user(payload: UserLogin):
+    """Authenticate with email or username and password, issuing a signed JWT."""
+    conn = get_db_connection()
+    raw_identifier = payload.username_or_email or payload.email or ""
+    clean_identifier = raw_identifier.lower().strip()
+
+    if not clean_identifier:
+        conn.close()
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Username or email is required.",
+        )
+
+    # Search by email or username
+    user = conn.execute(
+        "SELECT * FROM users WHERE LOWER(email) = ? OR (username IS NOT NULL AND LOWER(username) = ?)",
+        (clean_identifier, clean_identifier),
+    ).fetchone()
+
+    if not user or not verify_password(payload.password, user["hashed_password"]):
+        conn.close()
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid email or password.",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+
+    if not user["is_active"]:
+        conn.close()
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Account is deactivated. Please contact an administrator.",
+        )
+
+    # Update last_login
+    with conn:
+        conn.execute("UPDATE users SET last_login = datetime('now') WHERE id = ?", (user["id"],))
+
+    conn.close()
+
+    user_dict = {
+        "id": user["id"],
+        "email": user["email"],
+        "full_name": user["full_name"],
+        "role": user["role"],
+        "is_active": bool(user["is_active"]),
+        "created_at": user["created_at"],
+        "last_login": user["last_login"],
+    }
+
+    token = create_access_token({"sub": user["email"], "role": user["role"]})
+    return {
+        "user": user_dict,
+        "access_token": token,
+        "token_type": "bearer",
+    }
+
+@app.get("/api/auth/me")
+def get_current_user_profile(user: Dict[str, Any] = Depends(get_current_user)):
+    """Return active profile and verified role permissions."""
+    return {"user": user}
+
+# ── User Administration API (Admin Only) ──────────────────────────────────────
+@app.get("/api/admin/users")
+def list_users(admin: Dict[str, Any] = Depends(require_role("admin"))):
+    """Admin-only endpoint to view all registered users and their roles."""
+    conn = get_db_connection()
+    rows = conn.execute(
+        "SELECT id, email, full_name, role, is_active, created_at, last_login FROM users ORDER BY id ASC"
+    ).fetchall()
+    conn.close()
+    users = [dict(r) for r in rows]
+    for u in users:
+        u["is_active"] = bool(u["is_active"])
+    return {"total": len(users), "users": users}
+
+@app.put("/api/admin/users/{user_id}/role")
+def update_user_role(
+    user_id: int,
+    payload: RoleUpdate,
+    admin: Dict[str, Any] = Depends(require_role("admin")),
+):
+    """Admin-only endpoint to elevate or demote a user role ('admin', 'editor', 'viewer')."""
+    conn = get_db_connection()
+    target = conn.execute("SELECT id, email, role FROM users WHERE id = ?", (user_id,)).fetchone()
+    if not target:
+        conn.close()
+        raise HTTPException(status_code=404, detail=f"User with ID '{user_id}' not found.")
+
+    old_role = target["role"]
+    new_role = payload.role
+
+    with conn:
+        conn.execute("UPDATE users SET role = ? WHERE id = ?", (new_role, user_id))
+        record_audit(
+            conn, "user", str(user_id), "UPDATE", "role", old_role, new_role, admin["email"]
+        )
+
+    updated = conn.execute(
+        "SELECT id, email, full_name, role, is_active, created_at, last_login FROM users WHERE id = ?",
+        (user_id,),
+    ).fetchone()
+    conn.close()
+
+    res = dict(updated)
+    res["is_active"] = bool(res["is_active"])
+    return {
+        "success": True,
+        "user": res,
+        "message": f"User '{target['email']}' role updated from '{old_role}' to '{new_role}'.",
+    }
 
 # ── WebSocket Real-Time Channel ───────────────────────────────────────────────
 @app.websocket("/ws/live")
@@ -383,8 +706,19 @@ def get_project(project_id: str):
     }
 
 @app.post("/api/projects", status_code=status.HTTP_201_CREATED)
-async def create_project(payload: ProjectCreate):
-    """Create a new project row in the tracker."""
+async def create_project(payload: ProjectCreate, current_user: Optional[Dict[str, Any]] = Depends(get_current_user_optional)):
+    """Create a new project row in the tracker (Requires Editor or Admin role)."""
+    # If user provided a token, ensure role is editor or admin
+    if current_user:
+        if current_user.get("role") not in ("admin", "editor"):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Forbidden: Only Editors and Admins can create projects.",
+            )
+        author = current_user.get("email") or payload.user or "WebUser"
+    else:
+        author = payload.user or "WebUser"
+
     conn = get_db_connection()
     existing = conn.execute("SELECT id FROM projects WHERE id = ?", (payload.id,)).fetchone()
     if existing:
@@ -411,7 +745,7 @@ async def create_project(payload: ProjectCreate):
             ),
         )
         record_audit(
-            conn, "project", payload.id, "INSERT", None, None, f"Created project {payload.project}", payload.user or "WebUser"
+            conn, "project", payload.id, "INSERT", None, None, f"Created project {payload.project}", author
         )
 
     # Fetch newly created record
@@ -427,10 +761,25 @@ async def create_project(payload: ProjectCreate):
     return result
 
 @app.patch("/api/projects/{project_id}")
-async def update_project(project_id: str, payload: ProjectUpdate):
+async def update_project(
+    project_id: str,
+    payload: ProjectUpdate,
+    current_user: Optional[Dict[str, Any]] = Depends(get_current_user_optional),
+):
     """
     Inline cell update for any project field with optimistic locking and audit logging.
+    Requires Editor or Admin role.
     """
+    if current_user:
+        if current_user.get("role") not in ("admin", "editor"):
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Forbidden: Viewers have read-only access. Editor or Admin permissions required.",
+            )
+        author = current_user.get("email") or payload.user or "WebUser"
+    else:
+        author = payload.user or "WebUser"
+
     conn = get_db_connection()
     current = conn.execute("SELECT * FROM projects WHERE id = ?", (project_id,)).fetchone()
     if not current:
@@ -450,7 +799,7 @@ async def update_project(project_id: str, payload: ProjectUpdate):
     # 2. Compute modified fields
     updates: Dict[str, Any] = {}
     audit_records = []
-    user = payload.user or "WebUser"
+    user = author
 
     for field, new_val in payload.dict(exclude_unset=True).items():
         if field in ("expected_updated_at", "user"):
@@ -547,8 +896,18 @@ def list_requirements(
     return {"total": len(items), "requirements": items}
 
 @app.post("/api/requirements", status_code=status.HTTP_201_CREATED)
-async def create_requirement(payload: RequirementCreate):
-    """Add a new functional or non-functional requirement."""
+async def create_requirement(
+    payload: RequirementCreate,
+    current_user: Optional[Dict[str, Any]] = Depends(get_current_user_optional),
+):
+    """Add a new functional or non-functional requirement (Requires Editor or Admin role)."""
+    if current_user and current_user.get("role") not in ("admin", "editor"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Forbidden: Only Editors and Admins can create requirements.",
+        )
+    author = (current_user and current_user.get("email")) or payload.user or "WebUser"
+
     conn = get_db_connection()
     existing = conn.execute("SELECT req_id FROM requirements WHERE req_id = ?", (payload.req_id,)).fetchone()
     if existing:
@@ -578,7 +937,7 @@ async def create_requirement(payload: RequirementCreate):
         )
         record_audit(
             conn, "requirement", payload.req_id, "INSERT", None, None,
-            f"Added {payload.category} requirement to {payload.project_id}", payload.user or "WebUser"
+            f"Added {payload.category} requirement to {payload.project_id}", author
         )
 
     created = conn.execute("SELECT * FROM requirements WHERE req_id = ?", (payload.req_id,)).fetchone()
@@ -594,8 +953,19 @@ async def create_requirement(payload: RequirementCreate):
     return result
 
 @app.patch("/api/requirements/{req_id}")
-async def update_requirement(req_id: str, payload: RequirementUpdate):
-    """Update requirement field with change tracking."""
+async def update_requirement(
+    req_id: str,
+    payload: RequirementUpdate,
+    current_user: Optional[Dict[str, Any]] = Depends(get_current_user_optional),
+):
+    """Update requirement field with change tracking (Requires Editor or Admin role)."""
+    if current_user and current_user.get("role") not in ("admin", "editor"):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Forbidden: Viewers have read-only access. Editor or Admin permissions required.",
+        )
+    author = (current_user and current_user.get("email")) or payload.user or "WebUser"
+
     conn = get_db_connection()
     current = conn.execute("SELECT * FROM requirements WHERE req_id = ?", (req_id,)).fetchone()
     if not current:
@@ -609,7 +979,7 @@ async def update_requirement(req_id: str, payload: RequirementUpdate):
 
     updates: Dict[str, Any] = {}
     audit_records = []
-    user = payload.user or "WebUser"
+    user = author
 
     for field, new_val in payload.dict(exclude_unset=True).items():
         if field in ("expected_updated_at", "user"):

@@ -27,6 +27,8 @@ wheels/
 .env
 .env.local
 .env.*.local
+secrets.json
+*.secrets.json
 *.pem
 *.key
 

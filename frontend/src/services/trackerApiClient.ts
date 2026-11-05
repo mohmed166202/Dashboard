@@ -6,6 +6,7 @@ import type {
   KPISummaryResponse,
   KpiFilterParams,
 } from "../types/tracker";
+import { getAuthHeaders } from "./authApiClient";
 
 const BASE_URL =
   (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
@@ -62,7 +63,7 @@ export const trackerApi = {
     const url = getFullUrl("/api/projects");
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json", ...getAuthHeaders() },
       body: JSON.stringify(project),
     });
     if (!res.ok) {
@@ -79,7 +80,7 @@ export const trackerApi = {
     const url = getFullUrl(`/api/projects/${id}`);
     const res = await fetch(url, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json", ...getAuthHeaders() },
       body: JSON.stringify(updates),
     });
     if (!res.ok) {
@@ -91,7 +92,7 @@ export const trackerApi = {
 
   async deleteProject(id: string, user = "WebUser"): Promise<void> {
     const url = getFullUrl(`/api/projects/${id}`, { user });
-    const res = await fetch(url, { method: "DELETE" });
+    const res = await fetch(url, { method: "DELETE", headers: { ...getAuthHeaders() } });
     if (!res.ok) {
       const err = await res.text().catch(() => "Failed to delete project");
       throw new Error(err);
@@ -111,7 +112,7 @@ export const trackerApi = {
     const url = getFullUrl("/api/requirements");
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json", ...getAuthHeaders() },
       body: JSON.stringify(requirement),
     });
     if (!res.ok) {
@@ -128,7 +129,7 @@ export const trackerApi = {
     const url = getFullUrl(`/api/requirements/${reqId}`);
     const res = await fetch(url, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: { "Content-Type": "application/json", Accept: "application/json", ...getAuthHeaders() },
       body: JSON.stringify(updates),
     });
     if (!res.ok) {

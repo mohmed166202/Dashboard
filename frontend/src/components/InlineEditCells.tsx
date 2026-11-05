@@ -7,6 +7,7 @@ interface InlineSelectCellProps {
   onSave: (val: string) => Promise<void> | void;
   badgeStyle?: boolean;
   colorMap?: Record<string, { bg: string; text: string; border: string }>;
+  disabled?: boolean;
 }
 
 export const InlineSelectCell: React.FC<InlineSelectCellProps> = ({
@@ -15,6 +16,7 @@ export const InlineSelectCell: React.FC<InlineSelectCellProps> = ({
   onSave,
   badgeStyle = false,
   colorMap,
+  disabled = false,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentVal, setCurrentVal] = useState(value || "");
@@ -35,7 +37,7 @@ export const InlineSelectCell: React.FC<InlineSelectCellProps> = ({
     }
   };
 
-  if (isEditing) {
+  if (isEditing && !disabled) {
     return (
       <select
         autoFocus
@@ -59,9 +61,11 @@ export const InlineSelectCell: React.FC<InlineSelectCellProps> = ({
 
   return (
     <div
-      onClick={() => setIsEditing(true)}
-      title="Click to change"
-      className={`cursor-pointer transition-all hover:ring-1 hover:ring-amber-400 rounded px-1.5 py-0.5 inline-flex items-center gap-1 ${
+      onClick={() => { if (!disabled) setIsEditing(true); }}
+      title={disabled ? "Read-only (Sign in as Editor or Admin to modify)" : "Click to change"}
+      className={`transition-all rounded px-1.5 py-0.5 inline-flex items-center gap-1 ${
+        disabled ? "cursor-default opacity-85" : "cursor-pointer hover:ring-1 hover:ring-amber-400"
+      } ${
         badgeStyle ? "border text-xs font-medium" : "text-sm text-stone-800"
       }`}
       style={
@@ -79,12 +83,14 @@ interface InlineTextCellProps {
   value: string | null;
   onSave: (val: string) => Promise<void> | void;
   multiline?: boolean;
+  disabled?: boolean;
 }
 
 export const InlineTextCell: React.FC<InlineTextCellProps> = ({
   value,
   onSave,
   multiline = false,
+  disabled = false,
 }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [val, setVal] = useState(value || "");
@@ -108,7 +114,7 @@ export const InlineTextCell: React.FC<InlineTextCellProps> = ({
     }
   };
 
-  if (isEditing) {
+  if (isEditing && !disabled) {
     return (
       <div className="flex items-center gap-1 w-full" onClick={(e) => e.stopPropagation()}>
         {multiline ? (
@@ -153,9 +159,11 @@ export const InlineTextCell: React.FC<InlineTextCellProps> = ({
 
   return (
     <div
-      onClick={() => setIsEditing(true)}
-      title="Click to edit"
-      className="cursor-pointer hover:bg-amber-50/60 rounded px-1.5 py-0.5 truncate transition-colors text-sm text-stone-800"
+      onClick={() => { if (!disabled) setIsEditing(true); }}
+      title={disabled ? "Read-only (Sign in as Editor or Admin to modify)" : "Click to edit"}
+      className={`rounded px-1.5 py-0.5 truncate transition-colors text-sm text-stone-800 ${
+        disabled ? "cursor-default" : "cursor-pointer hover:bg-amber-50/60"
+      }`}
     >
       {value ? value : <span className="text-stone-300 italic">Empty</span>}
     </div>
@@ -165,9 +173,10 @@ export const InlineTextCell: React.FC<InlineTextCellProps> = ({
 interface InlineProgressCellProps {
   value: number | null;
   onSave: (val: number) => Promise<void> | void;
+  disabled?: boolean;
 }
 
-export const InlineProgressCell: React.FC<InlineProgressCellProps> = ({ value, onSave }) => {
+export const InlineProgressCell: React.FC<InlineProgressCellProps> = ({ value, onSave, disabled = false }) => {
   const [isEditing, setIsEditing] = useState(false);
   const pct = value !== null && value !== undefined ? Math.round(value * 100) : 0;
   const [val, setVal] = useState(pct);
@@ -181,7 +190,7 @@ export const InlineProgressCell: React.FC<InlineProgressCellProps> = ({ value, o
     await onSave(val / 100);
   };
 
-  if (isEditing) {
+  if (isEditing && !disabled) {
     return (
       <div
         className="flex items-center gap-2 p-1 bg-white rounded border border-amber-500 shadow-sm"
@@ -209,9 +218,11 @@ export const InlineProgressCell: React.FC<InlineProgressCellProps> = ({ value, o
 
   return (
     <div
-      onClick={() => setIsEditing(true)}
-      title="Click to adjust %"
-      className="cursor-pointer flex items-center gap-2 w-full max-w-[130px] hover:ring-1 hover:ring-amber-400 rounded p-1 transition-all"
+      onClick={() => { if (!disabled) setIsEditing(true); }}
+      title={disabled ? "Read-only (Sign in as Editor or Admin to modify)" : "Click to adjust %"}
+      className={`flex items-center gap-2 w-full max-w-[130px] rounded p-1 transition-all ${
+        disabled ? "cursor-default" : "cursor-pointer hover:ring-1 hover:ring-amber-400"
+      }`}
     >
       <div className="flex-1 h-2 bg-stone-200 rounded-full overflow-hidden">
         <div

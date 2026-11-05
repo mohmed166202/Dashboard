@@ -160,7 +160,22 @@ def create_schema(conn: sqlite3.Connection):
         );
         """)
 
-        # 6. High-Performance Indexes
+        # 6. Users & RBAC Table (Admin, Editor, Viewer)
+        conn.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE,
+            email TEXT UNIQUE NOT NULL,
+            full_name TEXT NOT NULL,
+            hashed_password TEXT NOT NULL,
+            role TEXT NOT NULL DEFAULT 'viewer', -- 'admin', 'editor', 'viewer'
+            is_active INTEGER DEFAULT 1,
+            created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+            last_login TEXT
+        );
+        """)
+
+        # 7. High-Performance Indexes
         conn.execute("CREATE INDEX IF NOT EXISTS idx_projects_status ON projects(status);")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_projects_phase ON projects(phase);")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_projects_domain ON projects(domain);")
@@ -170,6 +185,7 @@ def create_schema(conn: sqlite3.Connection):
         conn.execute("CREATE INDEX IF NOT EXISTS idx_req_category ON requirements(category);")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_dropdown_cat ON dropdown_lists(category);")
         conn.execute("CREATE INDEX IF NOT EXISTS idx_audit_entity ON audit_log(entity_type, entity_id);")
+        conn.execute("CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);")
 
 
 def extract_dropdowns(wb: openpyxl.Workbook) -> dict[str, list[dict[str, Any]]]:
