@@ -149,3 +149,55 @@ export interface KPISummaryResponse {
     is_filtered: boolean;
   };
 }
+
+export interface FeatureSummary {
+  req_id: string;
+  feature_name: string;
+  category: string;
+  nfr_area: string | null;
+  description: string;
+  status: string;
+  priority: string;
+  business_impact: string;
+  financial_impact_sar: number;
+  time_saved_hrs: number;
+  owner: string;
+  target_date: string | null;
+}
+
+export interface BenchmarkComparison {
+  metric_key: string;
+  metric_name: string;
+  actual_value: number;
+  target_value: number;
+  benchmark_min: number | null;
+  benchmark_max: number | null;
+  unit: string;
+  benchmark_unit: string;
+  source: string;
+  notes: string;
+  status: "EXCEEDING" | "ON_TARGET" | "BELOW_BENCHMARK";
+}
+
+export interface ProjectSummaryResponse {
+  project: Project;
+  overview: {
+    total_features: number;
+    implemented_features: number;
+    implementation_pct: number;
+    status_distribution: Record<string, number>;
+    category_distribution: Record<string, number>;
+    financial_metrics: {
+      revenue_impact_sar: number;
+      net_profit_sar: number;
+      time_saved_hrs: number;
+      csat_score: number;
+      current_subscribers: number;
+      target_subscribers: number;
+      adoption_rate: number;
+      productivity_pct: number;
+    };
+  };
+  benchmarks: BenchmarkComparison[];
+  features: FeatureSummary[];
+}

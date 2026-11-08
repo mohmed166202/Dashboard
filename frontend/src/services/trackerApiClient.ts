@@ -5,6 +5,7 @@ import type {
   AuditRecord,
   KPISummaryResponse,
   KpiFilterParams,
+  ProjectSummaryResponse,
 } from "../types/tracker";
 import { getAuthHeaders } from "./authApiClient";
 
@@ -57,6 +58,10 @@ export const trackerApi = {
     audit_history: AuditRecord[];
   }> {
     return fetchJson(`/api/projects/${id}`);
+  },
+
+  async getProjectSummary(id: string): Promise<ProjectSummaryResponse> {
+    return fetchJson<ProjectSummaryResponse>(`/api/projects/${id}/summary`);
   },
 
   async createProject(project: Partial<Project> & { id: string; project: string }): Promise<Project> {

@@ -5,6 +5,7 @@ import type { Project, Requirement, KpiFilterParams } from "../types/tracker";
 export const TRACKER_KEYS = {
   projects: (filters?: any) => ["tracker", "projects", filters] as const,
   project: (id: string) => ["tracker", "project", id] as const,
+  projectSummary: (id: string) => ["tracker", "project", "summary", id] as const,
   requirements: (projectId?: string) => ["tracker", "requirements", projectId] as const,
   dropdowns: ["tracker", "dropdowns"] as const,
   audit: (entityId: string) => ["tracker", "audit", entityId] as const,
@@ -34,6 +35,15 @@ export function useProject(id: string) {
     queryKey: TRACKER_KEYS.project(id),
     queryFn: () => trackerApi.getProject(id),
     enabled: Boolean(id),
+  });
+}
+
+export function useProjectSummary(id: string) {
+  return useQuery({
+    queryKey: TRACKER_KEYS.projectSummary(id),
+    queryFn: () => trackerApi.getProjectSummary(id),
+    enabled: Boolean(id),
+    staleTime: 1000 * 30, // 30 seconds
   });
 }
 

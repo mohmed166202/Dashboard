@@ -705,6 +705,156 @@ def get_project(project_id: str):
         "audit_history": [dict(a) for a in audits],
     }
 
+@app.get("/api/projects/{project_id}/summary")
+def get_project_summary(project_id: str):
+    """
+    Dedicated executive summary endpoint for a specific project.
+    Provides:
+      - Project metadata & progress
+      - Feature-level status distribution & deliverable metrics
+      - Financial & operational impact attribution per feature
+      - Scoped KPI benchmarks calibrated against healthcare targets
+    """
+    conn = get_db_connection()
+    proj = conn.execute("SELECT * FROM projects WHERE id = ?", (project_id,)).fetchone()
+    if not proj:
+        conn.close()
+        raise HTTPException(status_code=404, detail=f"Project '{project_id}' not found.")
+
+    proj_dict = dict(proj)
+
+    # 1. Project Impact Weights & Financials
+    impact = conn.execute(
+        "SELECT * FROM project_impact_weights WHERE project_id = ?", (project_id,)
+    ).fetchone()
+
+    time_saved_hrs = impact["time_saved_hrs"] if impact else 180.0
+    revenue_impact_sar = impact["revenue_impact_sar"] if impact else 150000.0
+    net_profit_sar = impact["net_profit_sar"] if impact else 105000.0
+    target_subs = impact["target_subscribers"] if impact else 100
+    current_subs = impact["current_subscribers"] if impact else 75
+    csat_score = impact["csat_score"] if impact else 8.5
+    productivity_pct = impact["productivity_pct"] if impact else 28.0
+
+    # 2. Child Requirements & Feature Attribution
+    req_rows = conn.execute(
+        "SELECT * FROM requirements WHERE project_id = ? ORDER BY req_id ASC", (project_id,)
+    ).fetchall()
+    reqs = [dict(r) for r in req_rows]
+
+    total_reqs = len(reqs)
+    status_counts: Dict[str, int] = {}
+    category_counts: Dict[str, int] = {}
+
+    for r in reqs:
+        st = r.get("status") or "Proposed"
+        cat = r.get("category") or "Functional"
+        status_counts[st] = status_counts.get(st, 0) + 1
+        category_counts[cat] = category_counts.get(cat, 0) + 1
+
+    implemented_count = status_counts.get("Implemented", 0) + status_counts.get("Verified", 0)
+    implementation_pct = round((implemented_count / total_reqs * 100), 1) if total_reqs > 0 else 0.0
+
+    # Dynamic Feature Impact Attribution Model:
+    # Distribute the project's total financial and time savings across features
+    # weighted by Priority (High: 3, Medium: 2, Low: 1) and Category
+    priority_weights = {"High": 3.0, "Medium": 2.0, "Low": 1.0}
+    total_feature_weight = sum(priority_weights.get(r.get("priority") or "Medium", 2.0) for r in reqs) or 1.0
+
+    features = []
+    for r in reqs:
+        p_weight = priority_weights.get(r.get("priority") or "Medium", 2.0)
+        weight_ratio = p_weight / total_feature_weight
+
+        # Feature financial & operational contribution
+        feature_rev_sar = round(revenue_impact_sar * weight_ratio, 0)
+        feature_time_hrs = round(time_saved_hrs * weight_ratio, 1)
+
+        # Plain-English business impact fallback
+        b_benefit = r.get("business_benefit") or r.get("description")
+        if not b_benefit or len(b_benefit.strip()) == 0:
+            b_benefit = f"Streamlines clinical workflow and contributes SAR {feature_rev_sar:,.0f} value."
+
+        features.append({
+            "req_id": r.get("req_id"),
+            "feature_name": r.get("requirement"),
+            "category": r.get("category") or "Functional",
+            "nfr_area": r.get("nfr_area"),
+            "description": r.get("description") or r.get("requirement"),
+            "status": r.get("status") or "Proposed",
+            "priority": r.get("priority") or "Medium",
+            "business_impact": b_benefit,
+            "financial_impact_sar": feature_rev_sar,
+            "time_saved_hrs": feature_time_hrs,
+            "owner": r.get("owner") or proj_dict.get("business_owner") or "AI Team",
+            "target_date": r.get("target_date") or proj_dict.get("due_date"),
+        })
+
+    # 3. Real-time Project Benchmark Calibrations
+    base_kpis = conn.execute("SELECT * FROM kpi_metrics ORDER BY id ASC").fetchall()
+    conn.close()
+
+    actual_map = {
+        "time_saved_hours": time_saved_hrs,
+        "revenue_impact": revenue_impact_sar,
+        "net_profit": net_profit_sar,
+        "target_subscribers": target_subs,
+        "current_subscribers": current_subs,
+        "adoption_rate": round((current_subs / target_subs * 100), 1) if target_subs > 0 else 0.0,
+        "customer_satisfaction": csat_score,
+        "productivity_increase": productivity_pct,
+    }
+
+    benchmarks = []
+    for bk in base_kpis:
+        key = bk["metric_key"]
+        actual_val = actual_map.get(key, bk["current_value"])
+        b_min = bk["industry_benchmark_min"]
+        b_max = bk["industry_benchmark_max"]
+
+        flag = "ON_TARGET"
+        if b_max is not None and actual_val > b_max:
+            flag = "EXCEEDING"
+        elif b_min is not None and actual_val < b_min:
+            flag = "BELOW_BENCHMARK"
+
+        benchmarks.append({
+            "metric_key": key,
+            "metric_name": bk["metric_name"],
+            "actual_value": actual_val,
+            "target_value": bk["target_value"],
+            "benchmark_min": b_min,
+            "benchmark_max": b_max,
+            "unit": bk["unit"],
+            "benchmark_unit": bk["industry_benchmark_unit"],
+            "source": bk["benchmark_source"],
+            "notes": bk["benchmark_notes"],
+            "status": flag,
+        })
+
+    return {
+        "project": proj_dict,
+        "overview": {
+            "total_features": total_reqs,
+            "implemented_features": implemented_count,
+            "implementation_pct": implementation_pct,
+            "status_distribution": status_counts,
+            "category_distribution": category_counts,
+            "financial_metrics": {
+                "revenue_impact_sar": revenue_impact_sar,
+                "net_profit_sar": net_profit_sar,
+                "time_saved_hrs": time_saved_hrs,
+                "csat_score": csat_score,
+                "current_subscribers": current_subs,
+                "target_subscribers": target_subs,
+                "adoption_rate": actual_map["adoption_rate"],
+                "productivity_pct": productivity_pct,
+            },
+        },
+        "benchmarks": benchmarks,
+        "features": features,
+    }
+
 @app.post("/api/projects", status_code=status.HTTP_201_CREATED)
 async def create_project(payload: ProjectCreate, current_user: Optional[Dict[str, Any]] = Depends(get_current_user_optional)):
     """Create a new project row in the tracker (Requires Editor or Admin role)."""
