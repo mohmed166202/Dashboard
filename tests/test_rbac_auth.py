@@ -209,3 +209,4 @@ class TestRBACPerformanceLatency:
 
         avg_latency = sum(times) / len(times)
         assert avg_latency < 50.0, f"Average latency too high: {avg_latency:.2f}ms"
+
