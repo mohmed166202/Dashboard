@@ -10,6 +10,7 @@ import {
   RefreshCw,
   LayoutGrid,
   BarChart2,
+  Briefcase,
   LogIn,
   LogOut,
   Crown,
@@ -23,12 +24,14 @@ import { AuthModal } from "./AuthModal";
 import { AdminUsersModal } from "./AdminUsersModal";
 import type { UserRole } from "../types/auth";
 
+export type DashboardTab = "SUMMARY" | "TRACKER" | "ANALYTICS";
+
 interface NavbarProps {
   onRefresh?: () => void;
   isRefreshing?: boolean;
   statusBadge?: ReactNode;
-  activeTab?: "TRACKER" | "ANALYTICS" | "MATRIX";
-  onTabChange?: (tab: "TRACKER" | "ANALYTICS" | "MATRIX") => void;
+  activeTab?: DashboardTab;
+  onTabChange?: (tab: DashboardTab) => void;
 }
 
 // Role visual config
@@ -54,7 +57,7 @@ export const Navbar: FC<NavbarProps> = ({
   onRefresh,
   isRefreshing = false,
   statusBadge,
-  activeTab = "TRACKER",
+  activeTab = "SUMMARY",
   onTabChange,
 }) => {
   const { isAuthenticated, user, logout, isLoading } = useAuth();
@@ -103,9 +106,22 @@ export const Navbar: FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* ── Tab Switcher ───────────────────────────────────────────────── */}
+          {/* ── Business-Friendly Tab Navigation ──────────────────────────── */}
           {onTabChange && (
             <nav className="flex items-center gap-1 bg-stone-900/40 p-1 rounded-xl border border-white/10 text-xs">
+              <button
+                onClick={() => onTabChange("SUMMARY")}
+                className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold transition-all ${
+                  activeTab === "SUMMARY"
+                    ? "bg-amber-100 text-amber-950 shadow-sm"
+                    : "text-amber-100/80 hover:text-white hover:bg-white/5"
+                }`}
+                title="Executive Overview, Feature Impacts & Benchmarks"
+              >
+                <Briefcase className="w-3.5 h-3.5 text-amber-700" />
+                <span>Executive Summary</span>
+              </button>
+
               <button
                 onClick={() => onTabChange("TRACKER")}
                 className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg font-bold transition-all ${
@@ -113,9 +129,10 @@ export const Navbar: FC<NavbarProps> = ({
                     ? "bg-amber-100 text-amber-950 shadow-sm"
                     : "text-amber-100/80 hover:text-white hover:bg-white/5"
                 }`}
+                title="Interactive Delivery Grid, Task Lists & Requirements"
               >
                 <LayoutGrid className="w-3.5 h-3.5" />
-                Tab 1: Project Tracker
+                <span>Project Delivery Matrix</span>
               </button>
 
               <button
@@ -125,9 +142,10 @@ export const Navbar: FC<NavbarProps> = ({
                     ? "bg-amber-100 text-amber-950 shadow-sm"
                     : "text-amber-100/80 hover:text-white hover:bg-white/5"
                 }`}
+                title="Comparative Benchmarks, Radar Models & Analytics"
               >
                 <BarChart2 className="w-3.5 h-3.5" />
-                Tab 2: Analytics & Benchmarks
+                <span>Analytics & Performance</span>
               </button>
             </nav>
           )}

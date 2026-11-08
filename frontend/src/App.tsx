@@ -1,6 +1,7 @@
 import { useState } from "react";
 import type { FC } from "react";
-import { Navbar } from "./components/Navbar";
+import { Navbar, type DashboardTab } from "./components/Navbar";
+import { ProjectSummaryTab } from "./components/ProjectSummaryTab";
 import { InteractiveTrackerTab } from "./components/InteractiveTrackerTab";
 import { AnalyticsDashboardTab } from "./components/AnalyticsDashboardTab";
 import { useKpiSummary } from "./hooks/useTrackerQueries";
@@ -15,7 +16,8 @@ import {
 } from "lucide-react";
 
 export const App: FC = () => {
-  const [activeTab, setActiveTab] = useState<"TRACKER" | "ANALYTICS" | "MATRIX">("TRACKER");
+  // Default to business-friendly SUMMARY tab as the primary landing page
+  const [activeTab, setActiveTab] = useState<DashboardTab>("SUMMARY");
   const { data: kpiData, refetch, isFetching } = useKpiSummary();
 
   const summary = kpiData?.portfolio_summary;
@@ -115,6 +117,13 @@ export const App: FC = () => {
         )}
 
         {/* ── Active Tab Display ────────────────────────────────────────── */}
+        {activeTab === "SUMMARY" && (
+          <ProjectSummaryTab
+            onNavigateToTracker={() => setActiveTab("TRACKER")}
+            onNavigateToAnalytics={() => setActiveTab("ANALYTICS")}
+          />
+        )}
+
         {activeTab === "TRACKER" && <InteractiveTrackerTab />}
 
         {activeTab === "ANALYTICS" && <AnalyticsDashboardTab />}
