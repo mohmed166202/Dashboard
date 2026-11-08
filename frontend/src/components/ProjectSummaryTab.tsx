@@ -28,6 +28,9 @@ import {
   ChevronRight,
   Gauge,
   HelpCircle,
+  FileText,
+  User,
+  Zap,
 } from "lucide-react";
 import {
   useProjects,
@@ -51,7 +54,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
   const { data: projectsData, isLoading: isLoadingProjects } = useProjects();
   const projects = projectsData?.projects || [];
 
-  const { data: portfolioKpis, isLoading: isLoadingPortfolio } = useKpiSummary();
+  const { data: portfolioKpis } = useKpiSummary();
   const { data: portfolioBenchmarksData } = useKpiBenchmarks();
   const { data: allRequirementsData } = useRequirements();
 
@@ -60,6 +63,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
   const [featureSearch, setFeatureSearch] = useState<string>("");
   const [statusFilter, setStatusFilter] = useState<string>("ALL");
   const [categoryFilter, setCategoryFilter] = useState<string>("ALL");
+  const [viewMode, setViewMode] = useState<"cards" | "table">("cards");
 
   const isPortfolioMode = selectedProjectId === "ALL";
 
@@ -196,23 +200,23 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
     const s = status.toLowerCase();
     if (s.includes("implement") || s.includes("done") || s.includes("live") || s.includes("verified")) {
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-200">
-          <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200/80">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
           {status}
         </span>
       );
     }
     if (s.includes("progress") || s.includes("uat") || s.includes("pilot")) {
       return (
-        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200">
-          <Clock className="w-3 h-3 text-amber-600" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200/80">
+          <span className="w-1.5 h-1.5 rounded-full bg-amber-600" />
           {status}
         </span>
       );
     }
     return (
-      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-stone-100 text-stone-700 border border-stone-200">
-        <Activity className="w-3 h-3 text-stone-500" />
+      <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-stone-100 text-stone-700 border border-stone-200">
+        <span className="w-1.5 h-1.5 rounded-full bg-stone-400" />
         {status}
       </span>
     );
@@ -223,20 +227,20 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
     switch (status) {
       case "EXCEEDING":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-black tracking-wider bg-emerald-100 text-emerald-800 border border-emerald-300">
-            EXCEEDING TARGET
+          <span className="px-2 py-0.5 rounded text-[10px] font-black tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200">
+            EXCEEDING
           </span>
         );
       case "ON_TARGET":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-black tracking-wider bg-amber-100 text-amber-800 border border-amber-300">
+          <span className="px-2 py-0.5 rounded text-[10px] font-black tracking-wider bg-amber-50 text-amber-800 border border-amber-200">
             ON TARGET
           </span>
         );
       case "BELOW_BENCHMARK":
         return (
-          <span className="px-2 py-0.5 rounded text-[10px] font-black tracking-wider bg-rose-100 text-rose-800 border border-rose-300">
-            ATTENTION NEEDED
+          <span className="px-2 py-0.5 rounded text-[10px] font-black tracking-wider bg-rose-50 text-rose-800 border border-rose-200">
+            ATTENTION
           </span>
         );
       default:
@@ -245,22 +249,24 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
   };
 
   return (
-    <div className="space-y-6 w-full max-w-full pb-12 animate-fadeIn">
+    <div className="space-y-6 w-full max-w-full pb-16 font-sans">
       {/* ── 1. Executive Quick Switcher & Header ─────────────────────────── */}
-      <div className="bg-white rounded-2xl p-5 border border-stone-200 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-amber-700 text-amber-50 flex items-center justify-center font-bold shadow-xs">
-            <Briefcase className="w-5 h-5" />
+      <div className="bg-white rounded-2xl p-5 border border-stone-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3.5">
+          <div className="w-11 h-11 rounded-xl bg-amber-800 text-amber-50 flex items-center justify-center font-bold shadow-xs shrink-0">
+            <Briefcase className="w-5 h-5 text-amber-100" />
           </div>
           <div>
-            <h1 className="text-xl font-black text-stone-900 tracking-tight flex items-center gap-2">
-              <span>Executive Project Summary</span>
-              <span className="text-xs px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold border border-emerald-200 flex items-center gap-1">
+            <div className="flex items-center gap-2">
+              <h1 className="text-xl font-black text-stone-900 tracking-tight">
+                Executive Project Summary
+              </h1>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 Live Strategic View
               </span>
-            </h1>
-            <p className="text-xs text-stone-500">
+            </div>
+            <p className="text-xs text-stone-500 mt-0.5">
               Feature deliverables, clinical & financial ROI attribution, and industry performance benchmarks.
             </p>
           </div>
@@ -268,8 +274,8 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
 
         {/* Project Selector Dropdown with Portfolio Aggregate Option */}
         <div className="flex items-center gap-3">
-          <label htmlFor="project-picker" className="text-xs font-bold text-stone-600 uppercase tracking-wider shrink-0">
-            Scope / Initiative:
+          <label htmlFor="project-picker" className="text-xs font-bold text-stone-500 uppercase tracking-wider shrink-0">
+            Initiative:
           </label>
           <div className="relative min-w-[280px] sm:min-w-[360px]">
             <select
@@ -277,7 +283,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
               value={selectedProjectId}
               onChange={(e) => setSelectedProjectId(e.target.value)}
               disabled={isLoadingProjects}
-              className="w-full appearance-none bg-stone-50 border border-stone-300 hover:border-amber-600 focus:border-amber-600 rounded-xl px-4 py-2.5 text-xs font-bold text-stone-900 shadow-2xs focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 transition-all pr-10 cursor-pointer"
+              className="w-full appearance-none bg-stone-50/70 border border-stone-300 hover:border-amber-700 focus:border-amber-700 rounded-xl px-4 py-2.5 text-xs font-bold text-stone-900 shadow-2xs focus:outline-hidden focus:ring-2 focus:ring-amber-600/10 transition-all pr-10 cursor-pointer"
             >
               <option value="ALL">🌐 Entire AI Portfolio (All 28 Initiatives Aggregate)</option>
               <optgroup label="Clinical & Operational Initiatives">
@@ -294,12 +300,12 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
       </div>
 
       {isLoadingSummary && !isPortfolioMode ? (
-        <div className="bg-white rounded-2xl p-16 border border-stone-200 text-center space-y-3">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-amber-600 border-t-transparent" />
+        <div className="bg-white rounded-2xl p-16 border border-stone-200/80 text-center space-y-3 shadow-xs">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-amber-700 border-t-transparent" />
           <p className="text-sm font-semibold text-stone-600">Loading project deliverables & benchmarks...</p>
         </div>
       ) : isError && !isPortfolioMode ? (
-        <div className="bg-rose-50 border border-rose-200 rounded-2xl p-8 text-center text-rose-800">
+        <div className="bg-rose-50 border border-rose-200 rounded-2xl p-8 text-center text-rose-800 shadow-xs">
           <AlertCircle className="w-8 h-8 mx-auto mb-2 text-rose-600" />
           <h3 className="text-base font-bold">Failed to load project summary</h3>
           <p className="text-xs text-rose-600 mt-1">Please select another initiative or try again.</p>
@@ -307,21 +313,21 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
       ) : (
         <>
           {/* ── 2. Executive Overview Hero Banner ──────────────────────────── */}
-          <div className="bg-gradient-to-r from-[#38261A] via-[#4d3627] to-[#2c1d13] text-amber-50 rounded-2xl p-6 sm:p-7 shadow-sm border border-amber-900/40 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-[#3B291D] via-[#4E382A] to-[#2E1E14] text-amber-50 rounded-2xl p-6 sm:p-7 shadow-xs border border-amber-950/40 relative overflow-hidden">
             <div className="relative z-10 space-y-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-md bg-amber-400/25 text-amber-300 text-xs font-black border border-amber-400/30">
+                  <span className="px-2.5 py-1 rounded-md bg-amber-400/20 text-amber-200 text-xs font-black border border-amber-400/30">
                     {isPortfolioMode ? "PORTFOLIO AGGREGATE" : project?.id}
                   </span>
-                  <span className="px-2.5 py-1 rounded-md bg-white/10 text-stone-200 text-xs font-semibold border border-white/10">
+                  <span className="px-2.5 py-1 rounded-md bg-white/10 text-stone-200 text-xs font-medium border border-white/10">
                     {isPortfolioMode ? "All 8 Healthcare Domains" : project?.domain}
                   </span>
                   <span className="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
                     {isPortfolioMode ? "Status: 28 Active Projects" : `Phase: ${project?.phase}`}
                   </span>
                   {!isPortfolioMode && project?.status && (
-                    <span className="px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-300 text-xs font-bold border border-blue-500/30">
+                    <span className="px-2.5 py-1 rounded-md bg-sky-500/20 text-sky-300 text-xs font-bold border border-sky-500/30">
                       Status: {project.status}
                     </span>
                   )}
@@ -365,8 +371,8 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
               <div className="pt-3 border-t border-white/10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
                 <div>
                   <span className="text-amber-200/70 block text-[11px] font-semibold uppercase">Overall Completion</span>
-                  <div className="flex items-center gap-3 mt-1">
-                    <div className="flex-1 bg-white/15 rounded-full h-2.5 overflow-hidden">
+                  <div className="flex items-center gap-3 mt-1.5">
+                    <div className="flex-1 bg-white/15 rounded-full h-2 overflow-hidden">
                       <div
                         className="bg-gradient-to-r from-amber-400 to-emerald-400 h-full rounded-full transition-all duration-500"
                         style={{ width: `${unifiedMetrics.avg_progress}%` }}
@@ -411,7 +417,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
           {/* ── 3. High-Impact KPI Cards (Financial & Operational) ───────────── */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Revenue Impact */}
-            <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-2xs flex flex-col justify-between hover:border-amber-400 transition-all">
+            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-2xs flex flex-col justify-between hover:border-amber-400/80 transition-all">
               <div className="flex items-center justify-between text-stone-500">
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                   Revenue Impact (SAR)
@@ -421,7 +427,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
                 </div>
               </div>
               <div className="mt-3">
-                <div className="text-2xl font-black text-stone-900">
+                <div className="text-2xl font-black text-stone-900 tracking-tight font-mono">
                   SAR {unifiedMetrics.revenue_sar.toLocaleString()}
                 </div>
                 <div className="flex items-center gap-1.5 mt-1 text-xs text-emerald-700 font-semibold">
@@ -432,47 +438,48 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
             </div>
 
             {/* Clinical Hours Saved */}
-            <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-2xs flex flex-col justify-between hover:border-amber-400 transition-all">
+            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-2xs flex flex-col justify-between hover:border-amber-400/80 transition-all">
               <div className="flex items-center justify-between text-stone-500">
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                   Clinician Time Saved
                 </span>
-                <div className="p-2 bg-amber-50 text-amber-700 rounded-xl">
+                <div className="p-2 bg-amber-50 text-amber-800 rounded-xl">
                   <Clock className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-3">
-                <div className="text-2xl font-black text-stone-900">
-                  {unifiedMetrics.hours_saved.toLocaleString()} hrs
+                <div className="text-2xl font-black text-stone-900 tracking-tight font-mono">
+                  {unifiedMetrics.hours_saved.toLocaleString()} <span className="text-base font-bold font-sans text-stone-600">hrs</span>
                 </div>
                 <div className="flex items-center gap-1.5 mt-1 text-xs text-amber-800 font-semibold">
+                  <Zap className="w-3.5 h-3.5" />
                   <span>Productivity Uplift: +{unifiedMetrics.productivity_pct}%</span>
                 </div>
               </div>
             </div>
 
             {/* Clinician CSAT & Adoption */}
-            <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-2xs flex flex-col justify-between hover:border-amber-400 transition-all">
+            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-2xs flex flex-col justify-between hover:border-amber-400/80 transition-all">
               <div className="flex items-center justify-between text-stone-500">
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                   Satisfaction & Adoption
                 </span>
-                <div className="p-2 bg-blue-50 text-blue-700 rounded-xl">
+                <div className="p-2 bg-sky-50 text-sky-700 rounded-xl">
                   <Users className="w-4 h-4" />
                 </div>
               </div>
               <div className="mt-3">
-                <div className="text-2xl font-black text-stone-900">
-                  {unifiedMetrics.csat_score} / 10
+                <div className="text-2xl font-black text-stone-900 tracking-tight font-mono">
+                  {unifiedMetrics.csat_score} <span className="text-base font-bold font-sans text-stone-500">/ 10</span>
                 </div>
-                <div className="flex items-center gap-1.5 mt-1 text-xs text-blue-700 font-semibold">
-                  <span>Adoption: {unifiedMetrics.adoption_rate}% ({unifiedMetrics.subscribers} active users)</span>
+                <div className="flex items-center gap-1.5 mt-1 text-xs text-sky-700 font-semibold">
+                  <span>Adoption: {unifiedMetrics.adoption_rate}% ({unifiedMetrics.subscribers} active)</span>
                 </div>
               </div>
             </div>
 
             {/* Feature Deliverables Completion */}
-            <div className="bg-white p-5 rounded-2xl border border-stone-200 shadow-2xs flex flex-col justify-between hover:border-amber-400 transition-all">
+            <div className="bg-white p-5 rounded-2xl border border-stone-200/80 shadow-2xs flex flex-col justify-between hover:border-amber-400/80 transition-all">
               <div className="flex items-center justify-between text-stone-500">
                 <span className="text-xs font-bold uppercase tracking-wider text-stone-500">
                   Feature Deliverables
@@ -482,8 +489,8 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
                 </div>
               </div>
               <div className="mt-3">
-                <div className="text-2xl font-black text-stone-900">
-                  {unifiedMetrics.implemented_features} / {unifiedMetrics.total_features}
+                <div className="text-2xl font-black text-stone-900 tracking-tight font-mono">
+                  {unifiedMetrics.implemented_features} <span className="text-base font-bold font-sans text-stone-500">/ {unifiedMetrics.total_features}</span>
                 </div>
                 <div className="flex items-center gap-1.5 mt-1 text-xs text-purple-700 font-semibold">
                   <CheckCircle2 className="w-3.5 h-3.5" />
@@ -494,15 +501,15 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
           </div>
 
           {/* ── 4. Project Benchmarks Strip ─────────────────────────────────── */}
-          <div className="bg-white rounded-2xl p-6 border border-stone-200 shadow-2xs space-y-4">
+          <div className="bg-white rounded-2xl p-6 border border-stone-200/80 shadow-2xs space-y-4">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-stone-100 pb-3">
               <div>
                 <h3 className="text-sm font-black text-stone-900 uppercase tracking-wider flex items-center gap-2">
-                  <Award className="w-4 h-4 text-amber-700" />
+                  <Award className="w-4 h-4 text-amber-800" />
                   <span>Calibrated Healthcare Industry Benchmarks</span>
                 </h3>
                 <p className="text-xs text-stone-500 mt-0.5">
-                  Real-time comparison against KLAS Research, HIMSS, and Andalusia Healthcare clinical targets.
+                  Real-time comparison against KLAS Research, HIMSS Analytics, and Andalusia Healthcare targets.
                 </p>
               </div>
               <span className="text-xs font-semibold text-stone-600 bg-stone-100 px-2.5 py-1 rounded-md border border-stone-200 self-start sm:self-auto">
@@ -514,7 +521,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
               {activeBenchmarks.map((b) => (
                 <div
                   key={b.metric_key}
-                  className="bg-stone-50/70 p-3.5 rounded-xl border border-stone-200/70 flex flex-col justify-between hover:bg-stone-50 transition-colors"
+                  className="bg-stone-50/60 p-3.5 rounded-xl border border-stone-200/70 flex flex-col justify-between hover:bg-stone-50 transition-colors"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-1 mb-1.5">
@@ -523,23 +530,23 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
                       </span>
                       {getBenchmarkBadge(b.status)}
                     </div>
-                    <div className="text-lg font-black text-stone-900">
+                    <div className="text-lg font-black text-stone-900 font-mono">
                       {b.actual_value?.toLocaleString()}{" "}
-                      <span className="text-xs font-medium text-stone-500">{b.unit}</span>
+                      <span className="text-xs font-medium font-sans text-stone-500">{b.unit}</span>
                     </div>
                   </div>
 
                   <div className="mt-3 pt-2 border-t border-stone-200/60 text-[10px] space-y-0.5 text-stone-600">
                     <div className="flex justify-between">
-                      <span className="text-stone-600">Industry Target:</span>
+                      <span className="text-stone-500">Industry Target:</span>
                       <span className="font-semibold text-stone-800">
                         {b.benchmark_min !== null ? `${b.benchmark_min}` : ""}{" "}
                         {b.benchmark_max !== null ? `– ${b.benchmark_max}` : ""} {b.benchmark_unit}
                       </span>
                     </div>
-                    <div className="flex justify-between text-stone-600 truncate" title={b.source}>
+                    <div className="flex justify-between text-stone-500 truncate" title={b.source}>
                       <span>Source:</span>
-                      <span className="truncate max-w-[140px] text-stone-600">{b.source}</span>
+                      <span className="truncate max-w-[140px] text-stone-700">{b.source}</span>
                     </div>
                   </div>
                 </div>
@@ -548,14 +555,14 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
           </div>
 
           {/* ── 5. Feature-Level Deliverables Matrix (Primary Value) ────────── */}
-          <div className="bg-white rounded-2xl border border-stone-200 shadow-2xs overflow-hidden">
+          <div className="bg-white rounded-2xl border border-stone-200/80 shadow-2xs overflow-hidden">
             <div className="p-6 border-b border-stone-200 space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <h3 className="text-base font-black text-stone-900 tracking-tight flex items-center gap-2">
-                    <Layers className="w-5 h-5 text-amber-700" />
+                    <Layers className="w-5 h-5 text-amber-800" />
                     <span>Feature Deliverables & Direct Impact Attribution</span>
-                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold">
+                    <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900 font-bold">
                       {filteredFeatures.length} of {activeFeatures.length} Features
                     </span>
                   </h3>
@@ -563,19 +570,43 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
                     Granular breakdown of every functional capability, technical non-functional requirement, and attributed SAR return.
                   </p>
                 </div>
+
+                {/* View Mode Toggle: Cards vs Compact Table */}
+                <div className="inline-flex items-center p-1 bg-stone-100 rounded-xl border border-stone-200 shrink-0">
+                  <button
+                    onClick={() => setViewMode("cards")}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                      viewMode === "cards"
+                        ? "bg-white text-stone-900 shadow-2xs"
+                        : "text-stone-600 hover:text-stone-900"
+                    }`}
+                  >
+                    Card View
+                  </button>
+                  <button
+                    onClick={() => setViewMode("table")}
+                    className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all cursor-pointer ${
+                      viewMode === "table"
+                        ? "bg-white text-stone-900 shadow-2xs"
+                        : "text-stone-600 hover:text-stone-900"
+                    }`}
+                  >
+                    Dense Table
+                  </button>
+                </div>
               </div>
 
               {/* Filter & Search Bar */}
               <div className="grid grid-cols-1 sm:grid-cols-12 gap-3 pt-1">
                 {/* Search */}
                 <div className="sm:col-span-6 relative">
-                  <Search className="w-4 h-4 text-stone-500 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+                  <Search className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
                   <input
                     type="text"
                     value={featureSearch}
                     onChange={(e) => setFeatureSearch(e.target.value)}
-                    placeholder="Search features, descriptions, owners, or impact..."
-                    className="w-full bg-stone-50 border border-stone-300 rounded-xl pl-9 pr-3 py-2 text-xs text-stone-900 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20"
+                    placeholder="Search features, descriptions, owners, or business value..."
+                    className="w-full bg-stone-50/70 border border-stone-300 rounded-xl pl-9 pr-3 py-2 text-xs text-stone-900 focus:outline-hidden focus:ring-2 focus:ring-amber-600/10"
                   />
                 </div>
 
@@ -584,7 +615,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
                   <select
                     value={statusFilter}
                     onChange={(e) => setStatusFilter(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-300 rounded-xl px-3 py-2 text-xs font-semibold text-stone-700 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 cursor-pointer"
+                    className="w-full bg-stone-50/70 border border-stone-300 rounded-xl px-3 py-2 text-xs font-semibold text-stone-700 focus:outline-hidden focus:ring-2 focus:ring-amber-600/10 cursor-pointer"
                   >
                     <option value="ALL">All Delivery Statuses</option>
                     {uniqueStatuses.map((st) => (
@@ -600,7 +631,7 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
                   <select
                     value={categoryFilter}
                     onChange={(e) => setCategoryFilter(e.target.value)}
-                    className="w-full bg-stone-50 border border-stone-300 rounded-xl px-3 py-2 text-xs font-semibold text-stone-700 focus:outline-hidden focus:ring-2 focus:ring-amber-500/20 cursor-pointer"
+                    className="w-full bg-stone-50/70 border border-stone-300 rounded-xl px-3 py-2 text-xs font-semibold text-stone-700 focus:outline-hidden focus:ring-2 focus:ring-amber-600/10 cursor-pointer"
                   >
                     <option value="ALL">All Categories</option>
                     {uniqueCategories.map((c) => (
@@ -613,76 +644,123 @@ export const ProjectSummaryTab: React.FC<ProjectSummaryTabProps> = ({
               </div>
             </div>
 
-            {/* Feature Cards / Dense Grid */}
-            <div className="divide-y divide-stone-100">
-              {filteredFeatures.length === 0 ? (
-                <div className="p-12 text-center text-stone-500 text-xs">
-                  No features match your active search and filter criteria.
-                </div>
-              ) : (
-                filteredFeatures.map((feat) => (
-                  <div
-                    key={feat.req_id}
-                    className="p-5 hover:bg-stone-50/70 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-4"
-                  >
-                    {/* Feature Details */}
-                    <div className="space-y-1.5 flex-1 max-w-4xl">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-mono text-xs font-black text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
-                          {feat.req_id}
-                        </span>
-                        <h4 className="text-sm font-bold text-stone-900">
-                          {feat.feature_name}
-                        </h4>
-                        <span
-                          className={`text-[11px] font-semibold px-2 py-0.2 rounded-full border ${
-                            feat.category === "Functional"
-                              ? "bg-blue-50 text-blue-700 border-blue-200"
-                              : "bg-purple-50 text-purple-700 border-purple-200"
-                          }`}
-                        >
-                          {feat.category} {feat.nfr_area ? `· ${feat.nfr_area}` : ""}
-                        </span>
-                        <span className="text-[11px] font-medium text-stone-500 bg-stone-100 px-2 py-0.2 rounded border border-stone-200">
-                          Priority: {feat.priority}
-                        </span>
-                        {feat.owner && (
-                          <span className="text-[11px] font-medium text-stone-600 bg-stone-50 px-2 py-0.2 rounded border border-stone-200 truncate max-w-[200px]">
-                            {feat.owner}
+            {/* Feature Content: Card Mode vs Table Mode */}
+            {viewMode === "cards" ? (
+              <div className="divide-y divide-stone-100">
+                {filteredFeatures.length === 0 ? (
+                  <div className="p-12 text-center text-stone-500 text-xs">
+                    No features match your active search and filter criteria.
+                  </div>
+                ) : (
+                  filteredFeatures.map((feat) => (
+                    <div
+                      key={feat.req_id}
+                      className="p-5 hover:bg-stone-50/70 transition-colors flex flex-col lg:flex-row lg:items-center justify-between gap-4"
+                    >
+                      {/* Feature Details */}
+                      <div className="space-y-1.5 flex-1 max-w-4xl">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <span className="font-mono text-xs font-bold text-amber-900 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                            {feat.req_id}
                           </span>
+                          <h4 className="text-sm font-bold text-stone-900">
+                            {feat.feature_name}
+                          </h4>
+                          <span
+                            className={`text-[11px] font-semibold px-2 py-0.2 rounded-full border ${
+                              feat.category === "Functional"
+                                ? "bg-blue-50 text-blue-700 border-blue-200"
+                                : "bg-purple-50 text-purple-700 border-purple-200"
+                            }`}
+                          >
+                            {feat.category} {feat.nfr_area ? `· ${feat.nfr_area}` : ""}
+                          </span>
+                          <span className="text-[11px] font-medium text-stone-500 bg-stone-100 px-2 py-0.2 rounded border border-stone-200">
+                            Priority: {feat.priority}
+                          </span>
+                          {feat.owner && (
+                            <span className="text-[11px] font-medium text-stone-600 bg-stone-50 px-2 py-0.2 rounded border border-stone-200 truncate max-w-[200px]">
+                              {feat.owner}
+                            </span>
+                          )}
+                        </div>
+
+                        <p className="text-xs text-stone-600 leading-relaxed">
+                          {feat.description}
+                        </p>
+
+                        {feat.business_impact && (
+                          <div className="flex items-start gap-1.5 text-xs text-emerald-800 bg-emerald-50/80 px-2.5 py-1 rounded-lg border border-emerald-200/60 w-fit mt-1">
+                            <Sparkles className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                            <span>
+                              <strong className="font-semibold">Business & Clinical Value:</strong> {feat.business_impact}
+                            </span>
+                          </div>
                         )}
                       </div>
 
-                      <p className="text-xs text-stone-600 leading-relaxed">
-                        {feat.description}
-                      </p>
-
-                      {feat.business_impact && (
-                        <div className="flex items-start gap-1.5 text-xs text-emerald-800 bg-emerald-50/80 px-2.5 py-1 rounded-lg border border-emerald-200/60 w-fit mt-1">
-                          <Sparkles className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                          <span>
-                            <strong className="font-semibold">Business & Clinical Value:</strong> {feat.business_impact}
-                          </span>
+                      {/* Financial Attribution & Status Badges */}
+                      <div className="flex flex-row lg:flex-col items-end justify-between lg:justify-center gap-2 shrink-0 border-t lg:border-t-0 pt-2 lg:pt-0 border-stone-100">
+                        <div className="text-right">
+                          <div className="text-xs font-mono font-black text-stone-900">
+                            SAR {feat.financial_impact_sar?.toLocaleString() || "0"}
+                          </div>
+                          <div className="text-[10px] text-stone-500 font-medium font-mono">
+                            {feat.time_saved_hrs || 0} hrs saved
+                          </div>
                         </div>
-                      )}
-                    </div>
-
-                    {/* Financial Attribution & Status Badges */}
-                    <div className="flex flex-row lg:flex-col items-end justify-between lg:justify-center gap-2 shrink-0 border-t lg:border-t-0 pt-2 lg:pt-0 border-stone-100">
-                      <div className="text-right">
-                        <div className="text-xs font-mono font-black text-stone-900">
-                          SAR {feat.financial_impact_sar?.toLocaleString() || "0"}
-                        </div>
-                        <div className="text-[10px] text-stone-500 font-medium">
-                          {feat.time_saved_hrs || 0} hrs saved
-                        </div>
+                        <div>{getStatusBadge(feat.status)}</div>
                       </div>
-                      <div>{getStatusBadge(feat.status)}</div>
                     </div>
-                  </div>
-                ))
-              )}
-            </div>
+                  ))
+                )}
+              </div>
+            ) : (
+              /* Compact Minimalist Table View */
+              <div className="overflow-x-auto">
+                <table className="w-full text-left border-collapse text-xs">
+                  <thead>
+                    <tr className="bg-stone-50/90 border-b border-stone-200 text-stone-600 font-bold uppercase tracking-wider text-[11px]">
+                      <th className="py-3 px-4">Req ID</th>
+                      <th className="py-3 px-4">Feature Name & Specification</th>
+                      <th className="py-3 px-4">Category</th>
+                      <th className="py-3 px-4">Status</th>
+                      <th className="py-3 px-4 text-right">Value (SAR)</th>
+                      <th className="py-3 px-4 text-right">Time Saved</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-stone-100 text-stone-800">
+                    {filteredFeatures.map((feat) => (
+                      <tr key={feat.req_id} className="hover:bg-stone-50/80 transition-colors">
+                        <td className="py-3 px-4 font-mono font-bold text-amber-900 whitespace-nowrap">
+                          {feat.req_id}
+                        </td>
+                        <td className="py-3 px-4 max-w-md">
+                          <div className="font-bold text-stone-900">{feat.feature_name}</div>
+                          <div className="text-[11px] text-stone-500 line-clamp-1 mt-0.5">{feat.description}</div>
+                        </td>
+                        <td className="py-3 px-4 whitespace-nowrap">
+                          <span className={`px-2 py-0.5 rounded-full text-[10px] font-semibold border ${
+                            feat.category === "Functional" ? "bg-blue-50 text-blue-700 border-blue-200" : "bg-purple-50 text-purple-700 border-purple-200"
+                          }`}>
+                            {feat.category}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4 whitespace-nowrap">
+                          {getStatusBadge(feat.status)}
+                        </td>
+                        <td className="py-3 px-4 text-right font-mono font-bold text-stone-900 whitespace-nowrap">
+                          SAR {feat.financial_impact_sar?.toLocaleString() || "0"}
+                        </td>
+                        <td className="py-3 px-4 text-right font-mono text-stone-600 whitespace-nowrap">
+                          {feat.time_saved_hrs || 0} hrs
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
           </div>
         </>
       )}
